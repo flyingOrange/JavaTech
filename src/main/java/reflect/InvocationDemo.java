@@ -14,7 +14,6 @@ interface People
 class MyInvocationHandler implements InvocationHandler
 {
 
-	@Override
 	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable 
 	{
 		System.out.println("-----正在执行的方法:"+method);
