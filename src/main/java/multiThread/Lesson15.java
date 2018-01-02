@@ -50,7 +50,6 @@ public class Lesson15 {
         for (int i = 0; i < 100; i++) {
             singleThreadExecutor.execute(new Runnable() {
 
-                @Override
                 public void run() {
                     System.out.println(Thread.currentThread());
                 }
