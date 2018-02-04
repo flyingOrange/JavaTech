@@ -1,4 +1,4 @@
-package spring;
+package spring.core.bean;
 
 public class Course {
 	private String courseName;

@@ -12,11 +12,16 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd
 	<!--context:component-scan base-package="service" />
 	<context:component-scan base-package="dao" />
 	<context:component-scan base-package="controller" /-->
+	<!-- 开启注解 -->
+	<context:annotation-config></context:annotation-config>
 
 	<!-- 手动配置bean -->
-	<bean id="studentBean" class="spring.Student" init-method="say"  destroy-method="destroy">
+	<bean id="studentBean" class="spring.Student"></bean>
+	
+	<bean id="studentBean2" class="spring.Student">
 		<constructor-arg name="course" ref="courseBean"></constructor-arg>
 	</bean>
+	
 	<bean id="courseBean" class="spring.Course"></bean>
 		
 	

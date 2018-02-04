@@ -1,8 +1,11 @@
-package spring;
+package spring.core.bean;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 public class Student {
 	private String id;
@@ -11,6 +14,7 @@ public class Student {
 	
 	private int age;
 	
+	@Resource(name="courseBean")
 	private Course course;
 	
 	public void say(){
@@ -21,8 +25,12 @@ public class Student {
 		System.out.println("destroy");
 	}
 	
+	public Student(){
+		System.out.println("Student constructor1");
+	}
+	
 	public Student(Course course){
-		System.out.println("Student constructor");
+		System.out.println("Student constructor2");
 		this.course = course;
 	}
 	

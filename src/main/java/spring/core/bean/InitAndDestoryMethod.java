@@ -1,5 +1,5 @@
-package spring;
-import spring.Student;
+package spring.core.bean;
+import spring.core.bean.Student;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -13,7 +13,7 @@ public class InitAndDestoryMethod {
 		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(locations);
 		//Course course = (Course) ctx.getBean("courseBean");
 		Student student = (Student) ctx.getBean("studentBean");
-		//student.say();
+		student.say();
 		
 		ctx.registerShutdownHook();
 

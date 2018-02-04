@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="myTest">
+
+	<select id="selectById" resultType="mybatis.User" parameterType="java.lang.Integer">
+		select * from User where id =
+		#{id}
+	</select>
+	
+	<select id="selectByIdList" resultType="mybatis.User" parameterType="java.lang.Integer">
+		select * from User where id =
+		#{id}
+	</select>
+	<delete id="deleteMany" parameterType="java.util.List">
+	
+	</delete>
+	
+	<insert id="insertMany" parameterType="java.util.List">
+		insert into user values
+		<foreach collection="list" item="item" separator=",">
+			(#{item.id},#{item.name},#{item.password})
+		</foreach>
+	</insert>
+	
+	
+</mapper>

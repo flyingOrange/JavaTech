@@ -3,7 +3,6 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>JavaTech</groupId>
 	<artifactId>JavaTech</artifactId>
-	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>JavaTech Maven Webapp</name>
 	<url>http://maven.apache.org</url>
@@ -59,9 +58,21 @@
 			<artifactId>spring-test</artifactId>
 			<version>4.2.5.RELEASE</version>
 		</dependency>
+		<!-- mysql -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.21</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.2.7</version>
+		</dependency>
 
 	</dependencies>
 	<build>
 		<finalName>JavaTech</finalName>
+		<defaultGoal>compile</defaultGoal>
 	</build>
 </project>
