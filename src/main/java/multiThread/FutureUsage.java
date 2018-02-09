@@ -10,12 +10,10 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-
-
 public class FutureUsage {
 
 	public static class Task implements Callable<String> {
-        @Override
+		
         public String call() throws Exception {
             String tid = String.valueOf(Thread.currentThread().getId());
             System.out.printf("Thread#"+tid +": in call\n");
