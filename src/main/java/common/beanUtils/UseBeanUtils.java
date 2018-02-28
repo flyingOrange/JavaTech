@@ -38,7 +38,8 @@ public class UseBeanUtils {
         map.put("birth", new Date());
 
         Student student5 = new Student();
-        BeanUtils.copyProperties(student5, map);
+        //BeanUtils.copyProperties(student5, map);
+        BeanUtils.populate(student5, map);
         System.out.println(student5);
 		
 
