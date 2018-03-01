@@ -114,7 +114,7 @@ public class SendMail {
 	/*
 	 * 通过javamail 用qq邮件发送,qq邮箱必须先设置开启pop3/smtp协议
 	 */
-	// @Test
+	 @Test
 	public void sendMailByJavaMailThroughQQ() throws GeneralSecurityException,
 			AddressException, MessagingException {
 		Properties prop = new Properties();
@@ -132,7 +132,6 @@ public class SendMail {
 		sf.setTrustAllHosts(true);
 		prop.put("mail.smtp.ssl.enable", "true");
 		prop.put("mail.smtp.ssl.socketFactory", sf);
-
 		// 创建session
 		Session session = Session.getInstance(prop);
 		// 通过session得到transport对象
@@ -145,7 +144,7 @@ public class SendMail {
 		message.setFrom(new InternetAddress("1846842602@qq.com"));
 		// 指明邮件的收件人，现在发件人和收件人是一样的，那就是自己给自己发
 		message.setRecipient(Message.RecipientType.TO, new InternetAddress(
-				"370686124@qq.com"));
+				"52323125@qq.com"));
 		// 邮件的标题
 		message.setSubject("您的vpn即将到期");
 		// 邮件的文本内容
@@ -160,7 +159,7 @@ public class SendMail {
 	/*
 	 * 使用javamail 发送带有附件的邮件
 	 */
-	@Test
+	//@Test
 	public void sendMailByJavaMailWithAppendix() throws AddressException,
 			MessagingException, IOException {
 		// 环境
@@ -237,12 +236,12 @@ public class SendMail {
 				"<span style='color:red'>中文呵呵</span><img src=\"http://sunteam.cc/logo.jsg\">",
 				"text/html;charset=utf-8");
 		// 生成文件邮件
-//		msg.saveChanges();
-//		// 输出
-//		OutputStream os = new FileOutputStream(
-//				"‪C:/Users/orange/Desktop/demo.eml");
-//		msg.writeTo(os);
-//		os.close();
+		// msg.saveChanges();
+		// // 输出
+		// OutputStream os = new FileOutputStream(
+		// "‪C:/Users/orange/Desktop/demo.eml");
+		// msg.writeTo(os);
+		// os.close();
 		Transport.send(msg);
 	}
 
