@@ -1,4 +1,4 @@
-package common.beanUtils;
+package common.apache.commons.beanUtils;
 
 import java.util.Date;
 
