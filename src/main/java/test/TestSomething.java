@@ -17,7 +17,11 @@ public class TestSomething {
 	@Test
 	public void readFileNames(){
 		
-		System.out.println(UUID.randomUUID());
+		for(int i=0;i<1;i++)
+		{
+			System.out.println(UUID.randomUUID());
+			
+		}
 
 		
 	}
