@@ -144,9 +144,9 @@ public class SendMail {
 		message.setFrom(new InternetAddress("1846842602@qq.com"));
 		// 指明邮件的收件人，现在发件人和收件人是一样的，那就是自己给自己发
 		message.setRecipient(Message.RecipientType.TO, new InternetAddress(
-				"52323125@qq.com"));
+				"2459317751@qq.com"));
 		// 邮件的标题
-		message.setSubject("您的vpn即将到期");
+		message.setSubject("您的vpn 2018-03-18即将到期！");
 		// 邮件的文本内容
 		String content = "<h1>请续费充值</h1><br/><img src='http://m.qpic.cn/psb?/V10A4nPr3gJrJj/xwmnaxfluBsPN8yb8D7iff4wvShPPHZH3lCEhD9gXyg!/b/dHIAAAAAAAAA&bo=OATKBXgG4AgDCUk!&rf=viewer_4' />"
 				+ "<img src='http://m.qpic.cn/psb?/V10A4nPr3gJrJj/jW.PW0d.i1bv1RMr2jILj.TRGvBLXeyiwbPNHhYv67o!/b/dFcBAAAAAAAA&bo=OARmBqAFiAgRGVc!&rf=viewer_4' />";
@@ -159,7 +159,7 @@ public class SendMail {
 	/*
 	 * 使用javamail 发送带有附件的邮件
 	 */
-	//@Test
+	// @Test
 	public void sendMailByJavaMailWithAppendix() throws AddressException,
 			MessagingException, IOException {
 		// 环境
