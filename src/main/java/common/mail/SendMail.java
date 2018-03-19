@@ -119,7 +119,7 @@ public class SendMail {
 			AddressException, MessagingException {
 		Properties prop = new Properties();
 		// 开启debug调试，以便在控制台查看
-		prop.setProperty("mail.debug", "true");
+		//prop.setProperty("mail.debug", "true");
 		// 设置邮件服务器主机名
 		prop.setProperty("mail.host", "smtp.qq.com");
 		// 发送服务器需要身份验证
