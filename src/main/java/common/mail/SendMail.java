@@ -115,7 +115,7 @@ public class SendMail {
 	 * 通过javamail 用qq邮件发送,qq邮箱必须先设置开启pop3/smtp协议
 	 */
 	 @Test
-	public void sendMailByJavaMailThroughQQ() throws GeneralSecurityException,
+	public void sendMailByJavaMailThroughQQ(String receiver,String deadline) throws GeneralSecurityException,
 			AddressException, MessagingException {
 		Properties prop = new Properties();
 		// 开启debug调试，以便在控制台查看
@@ -143,13 +143,15 @@ public class SendMail {
 		// 指明邮件的发件人
 		message.setFrom(new InternetAddress("1846842602@qq.com"));
 		// 指明邮件的收件人，现在发件人和收件人是一样的，那就是自己给自己发
-		message.setRecipient(Message.RecipientType.TO, new InternetAddress(
-				"2459317751@qq.com"));
+		message.setRecipient(Message.RecipientType.TO, new InternetAddress(receiver));
 		// 邮件的标题
-		message.setSubject("您的vpn 2018-03-18即将到期！");
+		message.setSubject("您的ss帐号"+ deadline +"即将到期");
 		// 邮件的文本内容
-		String content = "<h1>请续费充值</h1><br/><img src='http://m.qpic.cn/psb?/V10A4nPr3gJrJj/xwmnaxfluBsPN8yb8D7iff4wvShPPHZH3lCEhD9gXyg!/b/dHIAAAAAAAAA&bo=OATKBXgG4AgDCUk!&rf=viewer_4' />"
-				+ "<img src='http://m.qpic.cn/psb?/V10A4nPr3gJrJj/jW.PW0d.i1bv1RMr2jILj.TRGvBLXeyiwbPNHhYv67o!/b/dFcBAAAAAAAA&bo=OARmBqAFiAgRGVc!&rf=viewer_4' />";
+		
+		//String content = "<h1>请续费充值</h1><br/><img src='http://m.qpic.cn/psb?/V10A4nPr3gJrJj/xwmnaxfluBsPN8yb8D7iff4wvShPPHZH3lCEhD9gXyg!/b/dHIAAAAAAAAA&bo=OATKBXgG4AgDCUk!&rf=viewer_4' />"
+		//+ "<img src='http://m.qpic.cn/psb?/V10A4nPr3gJrJj/jW.PW0d.i1bv1RMr2jILj.TRGvBLXeyiwbPNHhYv67o!/b/dFcBAAAAAAAA&bo=OARmBqAFiAgRGVc!&rf=viewer_4' />";
+		String content = "<h1>如想继续使用,请续费充值</h1><br/><img src='http://m.qpic.cn/psb?/V10A4nPr3gJrJj/xwmnaxfluBsPN8yb8D7iff4wvShPPHZH3lCEhD9gXyg!/b/dHIAAAAAAAAA&bo=OATKBXgG4AgDCUk!&rf=viewer_4' />";
+		
 		message.setContent(content, "text/html;charset=UTF-8");
 		// 发送邮件
 		ts.sendMessage(message, message.getAllRecipients());
