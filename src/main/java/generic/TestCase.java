@@ -6,8 +6,7 @@ public class TestCase {
 
 	@Test
 	public void GenericMethod(){
-		
-		
+		System.out.println(GenericMethod.getMiddle(1,2,3,4,5,6,7));
 	}
 	
 	//@Test

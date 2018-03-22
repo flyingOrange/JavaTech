@@ -8,20 +8,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
-
 import net.spy.memcached.AddrUtil;
-import net.spy.memcached.BinaryConnectionFactory;
-import net.spy.memcached.CASMutation;
-import net.spy.memcached.CASMutator;
-import net.spy.memcached.CASValue;
 import net.spy.memcached.ConnectionObserver;
 import net.spy.memcached.MemcachedClient;
-import net.spy.memcached.transcoders.LongTranscoder;
-import net.spy.memcached.transcoders.SerializingTranscoder;
 import net.spy.memcached.transcoders.Transcoder;
 
 public class SpyMemcachedManager {
