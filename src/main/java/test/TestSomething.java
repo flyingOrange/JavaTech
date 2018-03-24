@@ -9,8 +9,8 @@ public class TestSomething {
 	@Test
 	public void readFileNames(){
 		
-		//System.out.println(UUID.randomUUID());
-		System.out.println(System.getProperty("java.version"));
+		System.out.println(UUID.randomUUID());
+		//System.out.println(System.getProperty("java.version"));
 		
 	}
 
