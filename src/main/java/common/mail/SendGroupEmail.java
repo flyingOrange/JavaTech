@@ -49,9 +49,19 @@ public class SendGroupEmail {
 				System.out.println("time format failed");
 				e.printStackTrace();
 			}
-			//System.out.println(email + " | " + deadline + " | " + time);
+			
+			
+			try {
+				sendMail.sendMailByJavaMailThroughQQ(email, deadline);
+				System.out.println("...............................................");
+				System.out.println(email + " | " + deadline + " | " + time);
+			} catch (GeneralSecurityException | MessagingException e) {
+				System.out.println("邮件发送失败:"+email);
+				e.printStackTrace();
+			}
+			
 			//筛选出临近到期day天数的用户
-			long dis = time - now;
+/*			long dis = time - now;
 			int day = 5;
 			if(dis>0 && dis<=(3600000*24*day)){
 				System.out.println("...............................................");
@@ -64,7 +74,7 @@ public class SendGroupEmail {
 					System.out.println("邮件发送失败:"+email);
 					e.printStackTrace();
 				}
-			}
+			}*/
 			
 		}
 
