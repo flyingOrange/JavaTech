@@ -58,7 +58,7 @@ public class SpyMemcachedTestCase{
 	@Test
 	public void testGet() {
 		System.out.println("====TestGet====");
-		String key = "samsung:permgrouping:1";
+		String key = "altopay:article:112:1";
 		
 		Object value = manager.get(key);
 		if (value != null) {
@@ -66,7 +66,6 @@ public class SpyMemcachedTestCase{
     		System.out.println("key=" + key + ";value=" + value);
     	} else {
     		System.out.println("Not found");
-    		System.out.println("key=" + key + ";value=" + value);
     	}
 	}
 
