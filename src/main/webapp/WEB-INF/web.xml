@@ -1,7 +1,31 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://java.sun.com/xml/ns/javaee" 
+    xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+    	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 
-<web-app>
-  <display-name>Archetype Created Web Application</display-name>
+    <display-name>SpringInvoke</display-name>
+    <servlet>
+        <servlet-name>service</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:/spring.core.httpinvoker.server/service-servlet.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>service</servlet-name>
+        <url-pattern>/service/*</url-pattern>
+    </servlet-mapping>
+
+     
+
+    <!-- 其实下面这个welcome-file-list没啥用，我留着只是为了在起好Tomcat后不会报一个404而已 -->
+    <welcome-file-list>
+            <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
 </web-app>
