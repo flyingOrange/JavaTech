@@ -23,10 +23,10 @@
 	<bean id="userServiceInvoker"
 		class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
 		<property name="service" ref="userServiceImpl" />
-		<property name="serviceInterface" value="com.abc.invoke.server.service.UserService" />
+		<property name="serviceInterface" value="spring.core.httpinvoker.server.service.UserService" />
 	</bean>
 
-	<bean id="userServiceImpl" class="com.abc.invoke.server.service.impl.UserServiceImpl" />
+	<bean id="userServiceImpl" class="spring.core.httpinvoker.server.service.UserServiceImpl" />
 
 
 </beans>

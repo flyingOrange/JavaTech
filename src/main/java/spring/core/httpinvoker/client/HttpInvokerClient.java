@@ -11,7 +11,7 @@ public class HttpInvokerClient {
 
 		ApplicationContext ac = new ClassPathXmlApplicationContext(
 
-		"classpath:application-context.xml");
+		"classpath:/spring/core/httpinvoker/client/client-context.xml");
 
 		UserService service = (UserService) ac.getBean("userService");
 
