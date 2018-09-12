@@ -4,7 +4,6 @@ import spring.core.httpinvoker.server.bean.User;
 
 public class UserServiceImpl implements UserService{
 
-	@Override
 	public User getUserbyId(long id) {
 		System.out.println(id);
 		User user = new User();
