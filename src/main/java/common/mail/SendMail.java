@@ -145,9 +145,9 @@ public class SendMail {
 		// 指明邮件的收件人，现在发件人和收件人是一样的，那就是自己给自己发
 		message.setRecipient(Message.RecipientType.TO, new InternetAddress(receiver));
 		// 邮件的标题
-		message.setSubject("好消息，新增日本服务器");
+		message.setSubject("服务器变动通知");
 		// 邮件的文本内容
-		String notify = "鉴于不同地区网络环境差异很大，为尽可能满足用户需求，现紧急增加日本服务器，地址为207.148.108.11，其他配置均不变，请大家选择适合自己的路线以提高速度。";
+		String notify = "您好，今天上午服务器23.236.75.138被封杀，尚不知道未来能否恢复，现增加一条路线，目前三条可用路线为:(207.148.107.212)、(45.62.98.131)、(104.129.182.2)，请大家择优使用";
 		//String content = "<h1>请续费充值</h1><br/><img src='http://m.qpic.cn/psb?/V10A4nPr3gJrJj/xwmnaxfluBsPN8yb8D7iff4wvShPPHZH3lCEhD9gXyg!/b/dHIAAAAAAAAA&bo=OATKBXgG4AgDCUk!&rf=viewer_4' />"
 		//+ "<img src='http://m.qpic.cn/psb?/V10A4nPr3gJrJj/jW.PW0d.i1bv1RMr2jILj.TRGvBLXeyiwbPNHhYv67o!/b/dFcBAAAAAAAA&bo=OARmBqAFiAgRGVc!&rf=viewer_4' />";
 		String content = "<h1>如想继续使用,请续费充值</h1><br/><img src='http://m.qpic.cn/psb?/V10A4nPr3gJrJj/xwmnaxfluBsPN8yb8D7iff4wvShPPHZH3lCEhD9gXyg!/b/dHIAAAAAAAAA&bo=OATKBXgG4AgDCUk!&rf=viewer_4' />";

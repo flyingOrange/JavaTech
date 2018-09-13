@@ -12,6 +12,8 @@ import java.util.Date;
 
 import javax.mail.MessagingException;
 
+import org.apache.commons.lang3.StringUtils;
+
 //从shadowsocks数据库user表中读取数据，向其中即将到期的用户发送提醒邮件
 public class SendGroupEmail {
 
@@ -33,8 +35,7 @@ public class SendGroupEmail {
 		while (rs.next()) {
 			String email = rs.getString("email");
 			String deadline = rs.getString("deadline");
-			if (email == null || deadline == null || email.equals("")
-					|| deadline.equals(""))
+			if (StringUtils.isAnyBlank(email,deadline))
 				continue;
 			email = email.trim();
 			deadline = deadline.trim();
