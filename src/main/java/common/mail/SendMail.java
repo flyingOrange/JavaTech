@@ -145,7 +145,7 @@ public class SendMail {
 		// 指明邮件的收件人，现在发件人和收件人是一样的，那就是自己给自己发
 		message.setRecipient(Message.RecipientType.TO, new InternetAddress(receiver));
 		// 邮件的标题
-		message.setSubject("服务器变动通知");
+		message.setSubject("服务器更换消息");
 		// 邮件的文本内容
 		String notify = "您好，今天上午服务器23.236.75.138被封杀，尚不知道未来能否恢复，现增加一条路线，目前三条可用路线为:(207.148.107.212)、(45.62.98.131)、(104.129.182.2)，请大家择优使用";
 		//String content = "<h1>请续费充值</h1><br/><img src='http://m.qpic.cn/psb?/V10A4nPr3gJrJj/xwmnaxfluBsPN8yb8D7iff4wvShPPHZH3lCEhD9gXyg!/b/dHIAAAAAAAAA&bo=OATKBXgG4AgDCUk!&rf=viewer_4' />"
