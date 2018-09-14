@@ -1,6 +1,6 @@
 package designPattern.factoryMethod;
 
-public class F3 implements food {
+public class F3 implements Food {
 
 	@Override
 	public String foodName() {

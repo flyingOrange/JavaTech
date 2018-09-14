@@ -1,5 +1,5 @@
 package designPattern.factoryMethod;
 
-public interface food {
+public interface Food {
 	public String foodName();
 }

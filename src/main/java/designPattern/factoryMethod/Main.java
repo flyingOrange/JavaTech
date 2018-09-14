@@ -4,7 +4,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		food food = null;
+		Food food = null;
 		switch(3) {
 		case 1:
 			food = StaticFactory.getF1();

@@ -4,13 +4,13 @@ package designPattern.factoryMethod;
 public class StaticFactory {
 	private StaticFactory(){}
 	
-	public static food getF1() {
+	public static Food getF1() {
 		return new F1();
 	}
-	public static food getF2() {
+	public static Food getF2() {
 		return new F2();
 	}
-	public static food getF3() {
+	public static Food getF3() {
 		return new F3();
 	}
 	
