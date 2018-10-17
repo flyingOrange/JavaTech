@@ -51,12 +51,18 @@ public class SendGroupEmail {
 				e.printStackTrace();
 			}
 			
+//			try {
+//				Thread.sleep(4*1000);
+//			} catch (InterruptedException e1) {
+//				System.out.println("sleep error");
+//			}
 			
 			try {
 				sendMail.sendMailByJavaMailThroughQQ(email, deadline);
+				//sendMail.sendMailByJavaMail(email);
 				System.out.println("...............................................");
 				System.out.println(email + " | " + deadline + " | " + time);
-			} catch (GeneralSecurityException | MessagingException e) {
+			} catch ( GeneralSecurityException | MessagingException e) {
 				System.out.println("邮件发送失败:"+email);
 				e.printStackTrace();
 			}

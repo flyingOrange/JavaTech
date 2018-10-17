@@ -77,7 +77,7 @@ public class SendMail {
 	 * 通过javamail发送
 	 */
 	// @Test
-	public void sendMailByJavaMail() throws AddressException,
+	public void sendMailByJavaMail(String email) throws AddressException,
 			MessagingException {
 		// 1.创建一个程序与邮件服务器会话对象 Session
 		Properties props = new Properties();
@@ -145,9 +145,9 @@ public class SendMail {
 		// 指明邮件的收件人，现在发件人和收件人是一样的，那就是自己给自己发
 		message.setRecipient(Message.RecipientType.TO, new InternetAddress(receiver));
 		// 邮件的标题
-		message.setSubject("服务器更换消息");
+		message.setSubject("服务器重大调整通知");
 		// 邮件的文本内容
-		String notify = "您好，今天上午服务器23.236.75.138被封杀，尚不知道未来能否恢复，现增加一条路线，目前三条可用路线为:(207.148.107.212)、(45.62.98.131)、(104.129.182.2)，请大家择优使用";
+		String notify = "亲爱的用户好~今天对服务器进行整合、维护、改进，在9月30号00-01:00停服。23.236.75.138路线将停止运行，运行的四条路线分别是（207.148.107.212）、（108.61.219.154）（45.62.98.131）、（104.129.182.2），端口不变，密码将改为您的邮箱"+receiver+",给您带来的不便请谅解";
 		//String content = "<h1>请续费充值</h1><br/><img src='http://m.qpic.cn/psb?/V10A4nPr3gJrJj/xwmnaxfluBsPN8yb8D7iff4wvShPPHZH3lCEhD9gXyg!/b/dHIAAAAAAAAA&bo=OATKBXgG4AgDCUk!&rf=viewer_4' />"
 		//+ "<img src='http://m.qpic.cn/psb?/V10A4nPr3gJrJj/jW.PW0d.i1bv1RMr2jILj.TRGvBLXeyiwbPNHhYv67o!/b/dFcBAAAAAAAA&bo=OARmBqAFiAgRGVc!&rf=viewer_4' />";
 		String content = "<h1>如想继续使用,请续费充值</h1><br/><img src='http://m.qpic.cn/psb?/V10A4nPr3gJrJj/xwmnaxfluBsPN8yb8D7iff4wvShPPHZH3lCEhD9gXyg!/b/dHIAAAAAAAAA&bo=OATKBXgG4AgDCUk!&rf=viewer_4' />";
