@@ -1,5 +1,6 @@
 package java8newFeatures.lambda;
 
+//lambda表达式用于替换函数式接口
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
