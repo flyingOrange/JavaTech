@@ -2,6 +2,8 @@ package java8newFeatures.stream;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -11,8 +13,8 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
-import org.junit.Test;
 
+import org.junit.Test;
 
 public class StreamTest {
 
@@ -153,14 +155,40 @@ public class StreamTest {
         Set<String> set = stream2.collect(Collectors.toSet());
         System.out.println(set);
         Stream<String> stream3 = Stream.of("I", "love", "you", "too");
-        Map<String, Integer> map = stream3.collect(Collectors.toMap(Function.identity(),String::length));
+        Map<String, Integer> map = stream3.collect(Collectors.toMap(Function.identity(), String::length));
         System.out.println(map);
-        
-        //
-        
+
+        // 1.目标容器是什么？
+        // 2.新元素如何添加到容器中？
+        // 3.多个部分结果如何合并成一个
+        // <R> R collect(Supplier<R> supplier, BiConsumer<R,? super T>
+        // accumulator, BiConsumer<R,R> combiner)
+        // Collectors提供常见的收集器toList() toSet() toMap()
+        Stream<String> stream4 = Stream.of("I", "love", "you", "too");
+        Stream<String> stream5 = Stream.of("I", "love", "you", "too");
+        List<String> result1 = stream4.collect(ArrayList::new, ArrayList::add, ArrayList::addAll);// 方式１
+        List<String> result2 = stream5.collect(Collectors.toList());// 方式2
+        List<Student> result3 = new ArrayList<Student>() {
+            {
+                add(new Student(1, "zhangsan", 77.5));
+                add(new Student(2, "lisi", 70.5));
+                add(new Student(3, "wangwu", 71.5));
+            }
+        };
+        Map<Integer, Student> hashMap = result3.stream().collect(Collectors.toMap(Student::getId, student -> student));
+        System.out.println(result1);
+        System.out.println(result2);
+        System.out.println(hashMap);
+
+        // 使用toCollection()指定规约容器的类型
+        // 由于返回结果是接口类型，我们并不知道类库实际选择的容器类型是什么，有时候我们可能会想要人为指定容器的实际类型，
+        // 这个需求可通过Collectors.toCollection(Supplier<C>collectionFactory)方法完成
+        Stream<String> stream6 = Stream.of("I", "love", "you", "too");
+        Stream<String> stream7 = Stream.of("I", "love", "you", "too");
+        ArrayList<String> arrayList = stream6.collect(Collectors.toCollection(ArrayList::new));
+        HashSet<String> hashSet = stream7.collect(Collectors.toCollection(HashSet::new));
 
         
-    
     }
 
 }
