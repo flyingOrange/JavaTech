@@ -123,6 +123,7 @@ public class StreamTest {
     }
 
     /*
+     * reduce()最常用的场景就是从一堆值中生成一个值
      * reduce操作可以实现从一组元素中生成一个值，sum()、max()、min()、count()等都是reduce操作，
      * 将他们单独设为函数只是因为常用
      * 
@@ -133,11 +134,23 @@ public class StreamTest {
      */
     @Test
     public void reduce() {
-        Stream<String> stream = Stream.of("I", "love5", "you", "too2");
-        Optional<String> longest = stream.reduce((s1, s2) -> s1.length() >= s2.length() ? s1 : s2);
-        // Optional<String> longest = stream.max((s1, s2) ->
-        // s1.length()-s2.length());
-        System.out.println(longest.get());
+        Stream<Integer> stream = Arrays.stream(new Integer[] { 1, 2, 3, 4, 5, 6, 7, 8 });
+        // 求集合元素只和
+        Integer result = stream.reduce(0, Integer::sum);
+        System.out.println(result);
+
+        // 求和
+        stream = Arrays.stream(new Integer[] { 1, 2, 3, 4, 5, 6, 7 });
+        stream.reduce((i, j) -> i + j).ifPresent(System.out::println);
+
+        // 求最大值
+        stream = Arrays.stream(new Integer[] { 1, 2, 3, 4, 5, 6, 7 });
+        stream.reduce(Integer::max).ifPresent(System.out::println);
+
+        // 求最小值
+        stream = Arrays.stream(new Integer[] { 1, 2, 3, 4, 5, 6, 7 });
+        stream.reduce(Integer::min).ifPresent(System.out::println);
+
 
     }
 
@@ -188,7 +201,6 @@ public class StreamTest {
         ArrayList<String> arrayList = stream6.collect(Collectors.toCollection(ArrayList::new));
         HashSet<String> hashSet = stream7.collect(Collectors.toCollection(HashSet::new));
 
-        
     }
 
 }
