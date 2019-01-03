@@ -1,4 +1,4 @@
-package common.apache.commons.lang.StringUtils;
+package common.apache.commons.StringUtils;
 import org.apache.commons.lang3.StringUtils;
 
 public class StringUtilsUsage {
