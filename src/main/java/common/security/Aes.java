@@ -15,6 +15,7 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 public class Aes {
@@ -29,7 +30,11 @@ public class Aes {
 			KeyGenerator keygen = KeyGenerator.getInstance("AES");
 			// 2.根据ecnodeRules规则初始化密钥生成器
 			// 生成一个128位的随机源,根据传入的字节数组
-			keygen.init(128, new SecureRandom(password.getBytes()));
+			// SecureRandom 实现完全随操作系统本身的內部状态，除非调用方在调用 getInstance 方法之后又调用了 setSeed 方法；
+			//该实现在 windows 上每次生成的 key 都相同，但是在 solaris 或部分 linux 系统上则不同。
+			SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
+			random.setSeed(password.getBytes());
+			keygen.init(128, random);
 			// 3.产生原始对称密钥
 			SecretKey original_key = keygen.generateKey();
 			// 4.获得原始对称密钥的字节数组
@@ -44,13 +49,10 @@ public class Aes {
 			byte[] byte_encode = content.getBytes("utf-8");
 			// 9.根据密码器的初始化方式--加密：将数据加密
 			byte[] byte_AES = cipher.doFinal(byte_encode);
-			// 10.将加密后的数据转换为字符串
-			// 这里用Base64Encoder中会找不到包
-			// 解决办法：
-			// 在项目的Build path中先移除JRE System Library，再添加库JRE System Library，重新编译后就一切正常了。
-			String AES_encode = new String(Base64.decodeBase64(byte_AES));
-			System.out.println(AES_encode);
-			return AES_encode;
+			// 10.将加密后的数据转换为十六进制字符串
+			String result = BytesStringUtil.bytesToHexString(byte_AES);
+			System.out.println("加密前: " + content + ",加密后16进制字符串: " + result);
+			return result;
 
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
@@ -65,7 +67,6 @@ public class Aes {
 		} catch (BadPaddingException e) {
 			e.printStackTrace();
 		}
-		// 如果有错就返加nulll
 		return null;
 	}
 
@@ -79,7 +80,10 @@ public class Aes {
 			KeyGenerator keygen = KeyGenerator.getInstance("AES");
 			// 2.根据ecnodeRules规则初始化密钥生成器
 			// 生成一个128位的随机源,根据传入的字节数组
-			keygen.init(128, new SecureRandom(password.getBytes()));
+			// keygen.init(128, new SecureRandom(password.getBytes()));
+			SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
+			random.setSeed(password.getBytes());
+			keygen.init(128, random);
 			// 3.产生原始对称密钥
 			SecretKey original_key = keygen.generateKey();
 			// 4.获得原始对称密钥的字节数组
@@ -91,41 +95,80 @@ public class Aes {
 			// 7.初始化密码器，第一个参数为加密(Encrypt_mode)或者解密(Decrypt_mode)操作，第二个参数为使用的KEY
 			cipher.init(Cipher.DECRYPT_MODE, key);
 			// 8.将加密并编码后的内容解码成字节数组
-			byte[] byte_content = Base64.decodeBase64(content);
+			/*
+			 * javax.crypto.IllegalBlockSizeException: Input length must be multiple of 16
+			 * when decrypting with padded cipher 原因
+			 * :加密后的byte数组是不能强制转换成字符串的，换言之：字符串和byte数组在这种情况下不是互逆的；要避免这种情况，我们需要做一些修订，
+			 * 可以考虑将二进制数据转换成十六进制表示
+			 */
+			byte[] byte_content = BytesStringUtil.hexStringToBytes(content);
 			/*
 			 * 解密
 			 */
-			byte[] byte_decode = cipher.doFinal(byte_content);
-			String AES_decode = new String(byte_decode, "utf-8");
-			System.out.println(AES_decode);
-			return AES_decode;
+			byte[] afterDecrypt = cipher.doFinal(byte_content);
+			String result = new String(afterDecrypt, "utf-8");
+			System.out.println("解密后: "+result);
+			return result;
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		} catch (NoSuchPaddingException e) {
 			e.printStackTrace();
 		} catch (InvalidKeyException e) {
 			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
 		} catch (IllegalBlockSizeException e) {
 			e.printStackTrace();
 		} catch (BadPaddingException e) {
 			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
 		}
 
-		// 如果有错就返加nulll
 		return null;
 	}
 
 	public static void main(String[] args) {
-
-		String content = "test";
+		String content = "注册";
 		String password = "12345678";
-		Aes.AESencode(password, content);
+		String afterEncrypt = Aes.AESencode(password, content);
+		Aes.AESdecode(password, afterEncrypt);
+	}
 
-		
-		Aes.AESdecode(password, content);
-		
+}
+
+class BytesStringUtil {
+
+	static String bytesToHexString(byte[] src) {
+		StringBuilder stringBuilder = new StringBuilder();
+		if (src == null || src.length <= 0) {
+			return null;
+		}
+		for (int i = 0; i < src.length; i++) {
+			int v = src[i] & 0xFF;
+			String hv = Integer.toHexString(v);
+			if (hv.length() < 2) {
+				stringBuilder.append(0);
+			}
+			stringBuilder.append(hv);
+		}
+		return stringBuilder.toString().toUpperCase();
+
+	}
+
+	static byte[] hexStringToBytes(String hexString) {
+		if (StringUtils.isBlank(hexString)) {
+			return null;
+		}
+		hexString = hexString.toUpperCase();
+		int length = hexString.length() / 2;
+		byte[] result = new byte[length];
+		for (int i = 0; i < length; i++) {
+
+			int high = Integer.parseInt(hexString.substring(i * 2, i * 2 + 1), 16);
+			int low = Integer.parseInt(hexString.substring(i * 2 + 1, i * 2 + 2), 16);
+			result[i] = (byte) (high * 16 + low);
+		}
+		return result;
+
 	}
 
 }
