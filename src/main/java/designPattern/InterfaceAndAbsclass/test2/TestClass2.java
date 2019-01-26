@@ -2,7 +2,7 @@ package designPattern.InterfaceAndAbsclass.test2;
 
 import designPattern.InterfaceAndAbsclass.InterfaceMulti;
 
-public class TestClass2 extends AbsClass2 implements InterfaceMulti {
+public class TestClass2 extends AbstractClass2 implements InterfaceMulti {
 
 
     @Override

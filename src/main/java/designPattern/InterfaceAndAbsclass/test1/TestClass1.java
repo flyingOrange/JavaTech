@@ -1,6 +1,6 @@
 package designPattern.InterfaceAndAbsclass.test1;
 
-public class TestClass1 extends AbsClass1{
+public class TestClass1 extends AbstractClass1{
 
     //实现AbsClass1的抽象方法drink()
     @Override

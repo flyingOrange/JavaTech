@@ -2,7 +2,7 @@ package designPattern.InterfaceAndAbsclass.test1;
 
 import designPattern.InterfaceAndAbsclass.InterfaceSon;
 
-public abstract class AbsClass1 implements InterfaceSon{
+public abstract class AbstractClass1 implements InterfaceSon{
     
     @Override
     public String say() {
