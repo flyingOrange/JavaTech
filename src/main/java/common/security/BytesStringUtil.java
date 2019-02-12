@@ -2,9 +2,9 @@ package common.security;
 
 import org.apache.commons.lang3.StringUtils;
 
-class BytesStringUtil {
+public class BytesStringUtil {
 
-	static String bytesToHexString(byte[] src) {
+	public static String bytesToHexString(byte[] src) {
 		StringBuilder stringBuilder = new StringBuilder();
 		if (src == null || src.length <= 0) {
 			return null;
@@ -21,7 +21,7 @@ class BytesStringUtil {
 
 	}
 
-	static byte[] hexStringToBytes(String hexString) {
+	public static byte[] hexStringToBytes(String hexString) {
 		if (StringUtils.isBlank(hexString)) {
 			return null;
 		}

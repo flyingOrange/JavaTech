@@ -1,4 +1,4 @@
-package common.security;
+package common.security.codec;
 
 import static org.junit.Assert.assertEquals;
 

@@ -1,4 +1,4 @@
-package common.security;
+package common.security.codec;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
