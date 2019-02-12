@@ -8,7 +8,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.Test;
 
 /*
- * 几种摘要算法
+ * 几种摘要算法(除base64)
  * */
 public class DigestCodec {
     @Test
