@@ -14,7 +14,7 @@ import common.security.encrypt.RSA;
 /*
  * RSA经典数字签名算法
  * */
-public class Signature {
+public class RSASignature {
     // 公钥
     public byte[] publicKey;
     // 私钥
@@ -31,6 +31,7 @@ public class Signature {
     }
 
     @Test
+    //RSA签名长度和公钥相等
     public void sign() throws Exception {
         String inputStr = "RSA数字签名";
         byte[] data = inputStr.getBytes();
