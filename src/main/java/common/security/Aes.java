@@ -13,6 +13,7 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
+import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
@@ -59,11 +60,13 @@ public class Aes {
 			cipher.init(Cipher.ENCRYPT_MODE, key);
 			// 8.获取加密内容的字节数组(这里要设置为utf-8)不然内容中如果有中文和英文混合中文就会解密为乱码
 			byte[] byte_encode = content.getBytes("utf-8");
+			System.out.println("加密前16进制字符串:"+ BytesStringUtil.bytesToHexString(byte_encode) +"\n加密前base64: "+Base64.encodeBase64String(byte_encode));
 			// 9.根据密码器的初始化方式--加密：将数据加密
 			byte[] byte_AES = cipher.doFinal(byte_encode);
 			// 10.将加密后的数据转换为十六进制字符串
 			String result = BytesStringUtil.bytesToHexString(byte_AES);
-			System.out.println("加密前: " + content + ",加密后16进制字符串: " + result);
+			String result2 = Base64.encodeBase64String(byte_AES);
+			System.out.println("加密后16进制字符串:" + result+"\n加密后base64编码:"+result2);
 			return result;
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
@@ -117,7 +120,11 @@ public class Aes {
 			 */
 			byte[] afterDecrypt = cipher.doFinal(byte_content);
 			String result = new String(afterDecrypt, "utf-8");
+			String result2 = Base64.encodeBase64String(afterDecrypt);
 			System.out.println("解密后: "+result);
+			System.out.println("解密后16进制字符串:"+ BytesStringUtil.bytesToHexString(afterDecrypt)   + "\nbase64解码:"+ result2);
+			
+			
 			return result;
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
