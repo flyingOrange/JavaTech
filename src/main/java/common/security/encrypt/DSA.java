@@ -31,7 +31,7 @@ public class DSA {
      * DSA密钥长度 默认1024 密钥长度必须是64的倍数 范围在512-1024之间
      */
     public static final int KEY_SIZE = 512;
-    
+
     /*
      * 签名
      * 
@@ -57,6 +57,7 @@ public class DSA {
         // 签名
         return signature.sign();
     }
+
     /*
      * 校验签名
      * 
@@ -81,7 +82,7 @@ public class DSA {
         // 签名
         return signature.verify(sign);
     }
-    
+
     /**
      * 初始化密钥
      */
@@ -102,6 +103,7 @@ public class DSA {
         keyMap.put(PRIVATE_KEY, privateKey);
         return keyMap;
     }
+
     /**
      * 取得私钥
      */
@@ -109,6 +111,7 @@ public class DSA {
         Key key = (Key) keyMap.get(PRIVATE_KEY);
         return key.getEncoded();
     }
+
     /**
      * 取得公钥
      */
@@ -116,5 +119,5 @@ public class DSA {
         Key key = (Key) keyMap.get(PUBLIC_KEY);
         return key.getEncoded();
     }
-    
+
 }

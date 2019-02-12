@@ -31,7 +31,7 @@ public class RSASignature {
     }
 
     @Test
-    //RSA签名长度和公钥相等
+    // RSA签名长度和公钥相等
     public void sign() throws Exception {
         String inputStr = "RSA数字签名";
         byte[] data = inputStr.getBytes();

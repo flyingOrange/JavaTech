@@ -10,7 +10,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import common.security.encrypt.DSA;
-import common.security.encrypt.RSA;
 
 public class DSASignature {
     // 公钥
@@ -27,9 +26,9 @@ public class DSASignature {
         System.out.println("公钥:" + Base64.encodeBase64String(publicKey));
         System.out.println("私钥:" + Base64.encodeBase64String(privateKey));
     }
-    
+
     @Test
-    //DSA签名长度和密钥长度无关,但可能与待签名数据存在某种关联
+    // DSA签名长度和密钥长度无关,但可能与待签名数据存在某种关联
     public void sign() throws Exception {
         String inputStr = "DSA数字签名";
         byte[] data = inputStr.getBytes();
