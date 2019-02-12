@@ -1,4 +1,4 @@
-package common.apache.commons.codec;
+package common.security.codec;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
@@ -7,7 +7,10 @@ import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.Test;
 
-public class Codec {
+/*
+ * 几种摘要算法(除base64)
+ * */
+public class DigestCodec {
     @Test
     // Base64编解码
     public void base64() throws UnsupportedEncodingException {
