@@ -27,4 +27,17 @@ public class HexUtils {
         System.out.println(Hex.encodeHexString(data).toUpperCase());
     }
     
+    @Test
+    public void common() {
+        byte binVal = 0b01010100;
+        System.out.println(binVal);
+        
+        byte hexVal = 0x03e;
+        System.out.println(hexVal);
+        
+        int dVal = 10000000;
+        System.out.println(Long.toBinaryString(dVal));
+        
+    }
+    
 }
