@@ -38,6 +38,11 @@ public class HexUtils {
         int dVal = 10000000;
         System.out.println(Long.toBinaryString(dVal));
         
+        int i = 10000000;
+        char c = (char)i;
+        i = c;
+        System.out.println(i);
+        
     }
     
 }
