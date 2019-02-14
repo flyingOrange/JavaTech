@@ -10,7 +10,7 @@ public class ConcreteDecorator extends Decorator{
     @Override
     public void biu() {
         System.out.println("start");
-        this.biu();
+        this.component.biu();
         System.out.println("end");
     }
 
