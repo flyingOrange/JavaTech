@@ -1,4 +1,4 @@
-package designPattern.abstractFactory;
+package designPattern.factory.abstractFactory;
 
 public class Factory4B implements produce{
 
