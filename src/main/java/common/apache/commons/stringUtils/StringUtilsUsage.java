@@ -12,8 +12,9 @@ public class StringUtilsUsage {
         String str6 = "ABCDEFG" ;
         String str7 = "Itfeels good to use apache commons.\r\n" ;
         String str8 = "     ABCDEFG     " ;
+        String str9 = "-123" ;
+        String str10 = "0123" ;
         
-
         // check for blank strings
         System.out.println( "==============================" );
         System.out.println( "Is str1 blank? " +StringUtils.isBlank(str1));
@@ -39,9 +40,12 @@ public class StringUtilsUsage {
         
         // check for numerics
         System.out.println( "==============================" );
+        System.out.println( "Is str1 numeric? " +StringUtils.isNumeric(str1));
         System.out.println( "Is str5 numeric? " +StringUtils.isNumeric(str5));
         System.out.println( "Is str6 numeric? " +StringUtils.isNumeric(str6));
-
+        System.out.println( "Is str9 numeric? " +StringUtils.isNumeric(str9));
+        System.out.println( "Is str10 numeric? " +StringUtils.isNumeric(str10));
+        
         // reverse strings / whole words
         System.out.println( "==============================" );
         System.out.println( "str6: " + str6);
