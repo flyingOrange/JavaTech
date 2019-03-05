@@ -37,12 +37,14 @@ import org.junit.Test;
 
 public class SendMail {
 
+	String notify = "各位的用户好~昨天服务器被封，目前还不知道未来能否恢复。"
+			+ "现重建两条路线,运行的路线分别是155.138.137.35 、 149.28.58.175 、 104.129.182.2 （目前流量用光了，3.9号恢复），端口和密码不变。 207.148.107.212 、 45.62.98.131这两条路线目前被封，各位继续保留以待观察,其他路线均废弃";
+
 	/*
 	 * 通过spring发送
 	 */
 	// @Test
-	public void sendMailBySpring() throws MessagingException,
-			UnsupportedEncodingException {
+	public void sendMailBySpring() throws MessagingException, UnsupportedEncodingException {
 		String HOST = "smtp.163.com";
 		Integer PORT = 25;
 		String USERNAME = "zcoranges@163.com";
@@ -62,8 +64,7 @@ public class SendMail {
 
 		MimeMessage mimeMessage = sender.createMimeMessage();
 		// 设置utf-8或GBK编码，否则邮件会有乱码
-		MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage,
-				true, "UTF-8");
+		MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
 		// 设置发送人和又叫标题
 		messageHelper.setFrom(USERNAME, "邮件标题orange");
 		// 收件人
@@ -77,8 +78,7 @@ public class SendMail {
 	 * 通过javamail发送
 	 */
 	// @Test
-	public void sendMailByJavaMail(String email) throws AddressException,
-			MessagingException {
+	public void sendMailByJavaMail(String email) throws AddressException, MessagingException {
 		// 1.创建一个程序与邮件服务器会话对象 Session
 		Properties props = new Properties();
 		props.setProperty("mail.transport.protocol", "SMTP");
@@ -90,8 +90,7 @@ public class SendMail {
 		// 验证账号及密码，密码需要是第三方授权码
 		Authenticator auth = new Authenticator() {
 			public PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("zcoranges@163.com",
-						"000orange");
+				return new PasswordAuthentication("zcoranges@163.com", "000orange");
 			}
 		};
 		Session session = Session.getInstance(props, auth);
@@ -100,12 +99,11 @@ public class SendMail {
 		// 设置发送者
 		message.setFrom(new InternetAddress("zcoranges@163.com"));
 		// 设置发送方式与接收者
-		message.setRecipient(MimeMessage.RecipientType.TO, new InternetAddress(
-				"370686124@qq.com"));
+		message.setRecipient(MimeMessage.RecipientType.TO, new InternetAddress(email));
 		// 设置主题
-		message.setSubject("邮件发送测试");
+		message.setSubject("服务器调整通知");
 		// 设置内容
-		message.setContent("haha你好", "text/html;charset=utf-8");
+		message.setContent(notify, "text/html;charset=utf-8");
 
 		// 3.创建 Transport用于将邮件发送
 		Transport.send(message);
@@ -114,12 +112,12 @@ public class SendMail {
 	/*
 	 * 通过javamail 用qq邮件发送,qq邮箱必须先设置开启pop3/smtp协议
 	 */
-	 @Test
-	public void sendMailByJavaMailThroughQQ(String receiver,String deadline) throws GeneralSecurityException,
-			AddressException, MessagingException {
+	@Test
+	public void sendMailByJavaMailThroughQQ(String receiver)
+			throws GeneralSecurityException, AddressException, MessagingException {
 		Properties prop = new Properties();
 		// 开启debug调试，以便在控制台查看
-		//prop.setProperty("mail.debug", "true");
+		// prop.setProperty("mail.debug", "true");
 		// 设置邮件服务器主机名
 		prop.setProperty("mail.host", "smtp.qq.com");
 		// 发送服务器需要身份验证
@@ -145,13 +143,9 @@ public class SendMail {
 		// 指明邮件的收件人，现在发件人和收件人是一样的，那就是自己给自己发
 		message.setRecipient(Message.RecipientType.TO, new InternetAddress(receiver));
 		// 邮件的标题
-		message.setSubject("服务器重大调整通知");
+		message.setSubject("服务器调整通知");
 		// 邮件的文本内容
-		String notify = "亲爱的用户好~今天对服务器进行整合、维护、改进，在9月30号00-01:00停服。23.236.75.138路线将停止运行，运行的四条路线分别是（207.148.107.212）、（108.61.219.154）（45.62.98.131）、（104.129.182.2），端口不变，密码将改为您的邮箱"+receiver+",给您带来的不便请谅解";
-		//String content = "<h1>请续费充值</h1><br/><img src='http://m.qpic.cn/psb?/V10A4nPr3gJrJj/xwmnaxfluBsPN8yb8D7iff4wvShPPHZH3lCEhD9gXyg!/b/dHIAAAAAAAAA&bo=OATKBXgG4AgDCUk!&rf=viewer_4' />"
-		//+ "<img src='http://m.qpic.cn/psb?/V10A4nPr3gJrJj/jW.PW0d.i1bv1RMr2jILj.TRGvBLXeyiwbPNHhYv67o!/b/dFcBAAAAAAAA&bo=OARmBqAFiAgRGVc!&rf=viewer_4' />";
-		String content = "<h1>如想继续使用,请续费充值</h1><br/><img src='http://m.qpic.cn/psb?/V10A4nPr3gJrJj/xwmnaxfluBsPN8yb8D7iff4wvShPPHZH3lCEhD9gXyg!/b/dHIAAAAAAAAA&bo=OATKBXgG4AgDCUk!&rf=viewer_4' />";
-		
+
 		message.setContent(notify, "text/html;charset=UTF-8");
 		// 发送邮件
 		ts.sendMessage(message, message.getAllRecipients());
@@ -162,8 +156,7 @@ public class SendMail {
 	 * 使用javamail 发送带有附件的邮件
 	 */
 	// @Test
-	public void sendMailByJavaMailWithAppendix() throws AddressException,
-			MessagingException, IOException {
+	public void sendMailByJavaMailWithAppendix() throws AddressException, MessagingException, IOException {
 		// 环境
 		Session session = Session.getDefaultInstance(new Properties());
 		// 邮件
@@ -176,8 +169,7 @@ public class SendMail {
 		// msg.setReplyTo(new Address[] { new InternetAddress("123456@163.com")
 		// });
 		// 设置发送方式与接收者
-		msg.setRecipient(MimeMessage.RecipientType.TO, new InternetAddress(
-				"370686124@qq.com"));
+		msg.setRecipient(MimeMessage.RecipientType.TO, new InternetAddress("370686124@qq.com"));
 		// 整封邮件的MINE消息体
 		MimeMultipart msgMultipart = new MimeMultipart("mixed");// 混合的组合关系
 		// 设置邮件的MINE消息体
@@ -196,8 +188,7 @@ public class SendMail {
 
 		// 把文件，添加到附件1中
 		// 数据源
-		DataSource ds1 = new FileDataSource(new File(
-				"‪C:/Users/orange/Desktop/code_16852.zip"));
+		DataSource ds1 = new FileDataSource(new File("‪C:/Users/orange/Desktop/code_16852.zip"));
 		// 数据处理器
 		DataHandler dh1 = new DataHandler(ds1);
 		// 设置第一个附件的数据
@@ -206,8 +197,7 @@ public class SendMail {
 		attch1.setFileName("code_16852.zip");
 
 		// 把文件，添加到附件2中
-		DataSource ds2 = new FileDataSource(new File(
-				"‪C:/Users/orange/Desktop/20180106193158.png"));
+		DataSource ds2 = new FileDataSource(new File("‪C:/Users/orange/Desktop/20180106193158.png"));
 		DataHandler dh2 = new DataHandler(ds2);
 		attch2.setDataHandler(dh2);
 		attch2.setFileName("20180106193158.png");
@@ -226,16 +216,14 @@ public class SendMail {
 		bodyMultipart.addBodyPart(imgPart);
 
 		// 把文件，添加到图片中
-		DataSource imgds = new FileDataSource(new File(
-				"‪C:/Users/orange/Desktop/20180106193158.png"));
+		DataSource imgds = new FileDataSource(new File("‪C:/Users/orange/Desktop/20180106193158.png"));
 		DataHandler imgdh = new DataHandler(imgds);
 		imgPart.setDataHandler(imgdh);
 		// 说明html中的img标签的src，引用的是此图片
 		imgPart.setHeader("Content-Location", "http://sunteam.cc/logo.jsg");
 
 		// html代码
-		htmlPart.setContent(
-				"<span style='color:red'>中文呵呵</span><img src=\"http://sunteam.cc/logo.jsg\">",
+		htmlPart.setContent("<span style='color:red'>中文呵呵</span><img src=\"http://sunteam.cc/logo.jsg\">",
 				"text/html;charset=utf-8");
 		// 生成文件邮件
 		// msg.saveChanges();
