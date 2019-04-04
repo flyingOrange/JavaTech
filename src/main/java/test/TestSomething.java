@@ -1,27 +1,25 @@
 package test;
 
-import java.math.BigDecimal;
-
-import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class TestSomething {
 
-	@Test
-	public void readFileNames() {
-		
-		BigDecimal num3 = BigDecimal.TEN;
-		
-		BigDecimal num1 = BigDecimal.ZERO;
-		BigDecimal num2 = BigDecimal.ONE;
-		BigDecimal num4 = BigDecimal.ONE;
-		BigDecimal total = num1.add(num2).add(num4);
+    @Test
+    public void readFileNames() {
+        // 通过LoggerFactory获取Logger实例
+        final Logger logger = LoggerFactory.getLogger(TestSomething.class);
+        logger.info("testlog: {}", "test"); 
 
+        logger.debug("testlog: {}", "test");
 
-		String str = RandomStringUtils.randomAscii(32);
-		System.out.println(str);
+        logger.error("testlog: {}", "test");
 
-        
-	}
+        logger.trace("testlog: {}", "test");
+
+        logger.warn("testlog: {}", "test");
+
+    }
 
 }

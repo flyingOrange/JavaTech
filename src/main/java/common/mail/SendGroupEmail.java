@@ -1,25 +1,19 @@
 package common.mail;
 
-import java.security.GeneralSecurityException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import javax.mail.MessagingException;
-
-import org.apache.commons.lang3.StringUtils;
+import java.util.HashSet;
+import java.util.Set;
 
 //从shadowsocks数据库user表中读取数据，向其中即将到期的用户发送提醒邮件
 public class SendGroupEmail {
 
 	public static void main(String[] args) throws ClassNotFoundException,
 			SQLException, InterruptedException {
-		String URL = "jdbc:mysql://127.0.0.1:3306/shadowsocks?useUnicode=true&amp;characterEncoding=utf-8";
+		String URL = "jdbc:mysql://45.32.58.78:3306/ss45.32.58.78?useUnicode=true&amp;characterEncoding=utf-8";
 		String USER = "root";
 		String PASSWORD = "000orange";
 		Class.forName("com.mysql.jdbc.Driver");
@@ -29,8 +23,7 @@ public class SendGroupEmail {
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
 
-		String str = "";
-		int num = 0;
+		Set<String> emails = new HashSet<String>();
 		//邮件类
 		SendMail sendMail = new SendMail();
 		while (rs.next()) {
@@ -38,9 +31,7 @@ public class SendGroupEmail {
 			String email = rs.getString("password");
 			if (!email.contains("@"))
 				continue;
-			email = email.trim();
-			num++;
-			str = str + ";" + email;
+			emails.add(email);
 			
 //			try {
 //				//sendMail.sendMailByJavaMailThroughQQ(email);
@@ -54,7 +45,13 @@ public class SendGroupEmail {
 //			Thread.sleep(1300);
 			
 		}
-		System.out.println(num);
+		System.out.println(emails.size());
+		System.out.println(emails);
+		
+		StringBuilder str = new StringBuilder();
+		emails.forEach(mail->{
+		    str.append(mail).append(";");
+		});
 		System.out.println(str);
 		
 		ps.execute();
