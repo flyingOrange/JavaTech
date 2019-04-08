@@ -1,4 +1,4 @@
-package net.httpURLConnection;
+package net.http.httpURLConnection;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -120,5 +120,5 @@ public class HttpURLConnectionDemo {
         }
 
     }
-
+    
 }

@@ -1,4 +1,4 @@
-package net.httpClient;
+package net.http.httpClient;
 
 import org.apache.http.HttpHost;
 import org.junit.Test;
