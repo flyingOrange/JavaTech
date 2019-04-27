@@ -27,7 +27,7 @@
 		<property name="serviceInterface" value="spring.core.httpinvoker.server.service.UserService" />
 	</bean>
 
-	<bean id="userServiceImpl" class="spring.core.httpinvoker.server.service.UserServiceImpl" />
+	<bean id="userServiceImpl" class="net.http.httpinvoker.server.service.UserServiceImpl" />
 
 
 </beans>

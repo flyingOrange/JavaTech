@@ -1,10 +1,10 @@
-package spring.core.httpinvoker.client;
+package net.http.httpinvoker.client;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import spring.core.httpinvoker.server.bean.User;
-import spring.core.httpinvoker.server.service.UserService;
+import net.http.httpinvoker.server.bean.User;
+import net.http.httpinvoker.server.service.UserService;
 
 public class HttpInvokerClient {
 	public static void main(String[] args) {

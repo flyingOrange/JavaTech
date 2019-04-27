@@ -1,4 +1,4 @@
-package spring.core.httpinvoker.server.bean;
+package net.http.httpinvoker.server.bean;
 
 import java.io.Serializable;
 

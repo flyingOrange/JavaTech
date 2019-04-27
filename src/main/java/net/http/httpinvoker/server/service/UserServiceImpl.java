@@ -1,6 +1,6 @@
-package spring.core.httpinvoker.server.service;
+package net.http.httpinvoker.server.service;
 
-import spring.core.httpinvoker.server.bean.User;
+import net.http.httpinvoker.server.bean.User;
 
 public class UserServiceImpl implements UserService{
 
