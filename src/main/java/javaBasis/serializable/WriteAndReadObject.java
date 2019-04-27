@@ -42,6 +42,7 @@ public class WriteAndReadObject {
 		try {
 			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("object.txt"));
 			oos.writeObject(per);
+			oos.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -53,6 +54,7 @@ public class WriteAndReadObject {
 		try {
 			ObjectInputStream ois = new ObjectInputStream(new FileInputStream("object.txt"));
 			Person p = (Person) ois.readObject();
+			ois.close();
 			System.out.println(p.getName());
 			System.out.println(p.getAge());
 		} catch (FileNotFoundException | ClassNotFoundException e) {

@@ -211,8 +211,6 @@
 			<artifactId>jedis</artifactId>
 			<version>3.0.1</version>
 		</dependency>
-
-		<!-- Google Play Developer API -->
 		<!-- websocket -->
 		<!-- server、client基于tomcat,还有其他版本 -->
 		<dependency>
