@@ -3,12 +3,9 @@ package cache.redis;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
-
 import org.junit.Before;
 import org.junit.Test;
-
-import javaBasis.serializable.SerializableListTool;
-import javaBasis.serializable.SerializableObjectTool;
+import javaBasis.serializable.SerializableTool;
 import redis.clients.jedis.Jedis;
 
 public class JedisTool {
@@ -37,9 +34,9 @@ public class JedisTool {
 	public void cacheObject() throws IOException, ClassNotFoundException {
 		Orange orange = new Orange(98,"haha");
 		
-		jedis.set("obj".getBytes(), SerializableObjectTool.obj2Bytes(orange));
+		jedis.set("obj".getBytes(), SerializableTool.obj2Bytes(orange));
 		byte[] bytes = jedis.get("obj".getBytes());
-		Object obj = SerializableObjectTool.bytes2Obj(bytes);
+		Object obj = SerializableTool.bytes2Obj(bytes);
 		System.out.println((Orange)obj);
 		jedis.close();
 	}
@@ -53,8 +50,7 @@ public class JedisTool {
 				add(new Orange(62,"xixi"));
 			}
 		};
-		SerializableListTool<Orange> tool = new SerializableListTool<Orange>();
-		byte[] bytes = tool.serializableList(list);
+		byte[] bytes = SerializableTool.serializableList(list);
 		jedis.set("list".getBytes(),bytes);
 		jedis.close();
 	}
@@ -62,8 +58,7 @@ public class JedisTool {
 	@Test
 	public void getList() {
 		byte[] bytes = jedis.get("list".getBytes());
-		SerializableListTool<Orange> tool = new SerializableListTool<Orange>();
-		List<Orange> list = tool.unSerializableList(bytes);
+		List<Orange> list = SerializableTool.unSerializableList(bytes);
 		
 		System.out.println(list);
 		jedis.close();

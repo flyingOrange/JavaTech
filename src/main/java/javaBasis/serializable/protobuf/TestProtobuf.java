@@ -1,4 +1,4 @@
-package javaBasis.serializable;
+package javaBasis.serializable.protobuf;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 

@@ -1,4 +1,4 @@
-package generic;
+package javaBasis.generic;
 
 //泛型类
 //泛型的类型参数只能是类类型（包括自定义类），不能是简单类型

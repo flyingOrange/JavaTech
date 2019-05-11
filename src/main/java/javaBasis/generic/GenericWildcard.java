@@ -1,4 +1,4 @@
-package generic;
+package javaBasis.generic;
 
 //系统通配符
 //Integer是Number的子类

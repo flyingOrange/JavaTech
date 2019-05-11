@@ -1,8 +1,7 @@
-package generic;
-
-import java.io.Serializable;
+package javaBasis.generic;
 
 import org.junit.Test;
+//泛型有三种使用方式，分别为：泛型类、泛型接口、泛型方法
 
 public class TestCase {
 

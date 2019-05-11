@@ -9,7 +9,9 @@ import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
-public class SerializableObjectTool {
+import cache.redis.Orange;
+
+public class SerializableTool {
 	
 	//对象转化为二进制流(序列化)
 	public static byte[] obj2Bytes(Object obj) {
@@ -41,9 +43,44 @@ public class SerializableObjectTool {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		
-		
 		return obj;
+	}
+	
+	public static <T> List<T> unSerializableList(byte[] bytes) {
+		ObjectInputStream ois = null;
+		List<T> list = null;
+		ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
+		try {
+			ois = new ObjectInputStream(bis);
+			Orange obj = (Orange) ois.readObject();
+			//list = obj;
+			ois.close();
+			bis.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+
+	// 序列化List
+	public static <T> byte[] serializableList(List<T> list) {
+		ByteArrayOutputStream bos = new ByteArrayOutputStream();
+		try {
+			ObjectOutputStream oos = new ObjectOutputStream(bos);
+			for(T elem : list) {
+				oos.writeObject(elem);
+			}
+			bos.close();
+			oos.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		byte[] bytes = bos.toByteArray();
+		return bytes;
 	}
 	
 }
