@@ -1,10 +1,12 @@
 package cache.redis;
 
 import java.io.IOException;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
+
 import javaBasis.serializable.SerializableTool;
 import redis.clients.jedis.Jedis;
 
@@ -44,7 +46,7 @@ public class JedisTool {
 	//缓存List
 	@Test
 	public void cacheList() {
-		List<Orange> list = new LinkedList<Orange>() {
+		List<Orange> list = new ArrayList<Orange>() {
 			{
 				add(new Orange(22,"hei"));
 				add(new Orange(62,"xixi"));

@@ -52,8 +52,7 @@ public class SerializableTool {
 		ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
 		try {
 			ois = new ObjectInputStream(bis);
-			Orange obj = (Orange) ois.readObject();
-			//list = obj;
+			list = (List<T>) ois.readObject();
 			ois.close();
 			bis.close();
 		} catch (IOException e) {
@@ -70,17 +69,16 @@ public class SerializableTool {
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
 		try {
 			ObjectOutputStream oos = new ObjectOutputStream(bos);
-			for(T elem : list) {
-				oos.writeObject(elem);
-			}
+			oos.writeObject(list); 
+			oos.flush();
+			byte[] bytes = bos.toByteArray();
 			bos.close();
 			oos.close();
+			return bytes;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		byte[] bytes = bos.toByteArray();
-		return bytes;
+		return null;
 	}
 	
 }
