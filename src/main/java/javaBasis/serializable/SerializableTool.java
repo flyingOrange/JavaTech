@@ -76,6 +76,7 @@ public class SerializableTool {
 			oos.close();
 			return bytes;
 		} catch (IOException e) {
+			System.out.println("...................................................");
 			e.printStackTrace();
 		}
 		return null;
