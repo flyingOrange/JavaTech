@@ -1,6 +1,8 @@
 package java8newFeatures.functionalInterface;
 
 import org.junit.Test;
+import java.util.function.Consumer;
+
 
 public class FunctionalTest {
 	/**

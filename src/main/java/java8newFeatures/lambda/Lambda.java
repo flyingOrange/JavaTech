@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 import org.junit.Test;
@@ -118,6 +119,19 @@ public class Lambda {
 	                + ", \"score\":\"" + score + "\""
 	                + "}";
 	    }
+	}
+	
+	@Test
+	public void test() {
+	    
+	    List<Integer> list = Arrays.asList(0, 1, 2, 3);
+	    Consumer<Integer> consumer = new Consumer<Integer>() {
+	        @Override
+	        public void accept(Integer integer) {
+	            System.out.println(integer);
+	        }
+	    };
+	    list.forEach(consumer);
 	}
 
 }
