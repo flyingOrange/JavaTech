@@ -1,6 +1,7 @@
 package java8newFeatures.lambda;
 
 //lambda表达式用于替换函数式接口
+//接口中有且只有一个抽象方法，则可以被注解为函数式接口。java8新特性，接口
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -34,7 +35,7 @@ public class Lambda {
 	
 	
 	@Test
-	//无参数
+	//无参数、无返回
 	public void lambda1() {
 		//原始方法
 		Thread thread1 = new Thread(new Runnable() {

@@ -3,20 +3,28 @@ package java8newFeatures.functionalInterface;
 import org.junit.Test;
 import java.util.function.Consumer;
 
-
 public class FunctionalTest {
-	/**
-	 * 需要单个参数
-	 */
-	public static void testOnePar(MyFunctionalInterface myFunctionalInterface) {
-		myFunctionalInterface.single("msg");
-	}
-	
-	/*
-	 * 一个参数，可以省略参数的括号
+    /**
+     * 需要单个参数
+     */
+    @Test
+    public void testOnePar() {
+        MyFunctionalInterface myFunctionalInterface = (String elem) -> {
+            System.out.println(elem);
+        };
+        myFunctionalInterface.single("msg");
+    }
+
+    /*
+     * 多参数，有返回值
      */
     @Test
     public void testOneParameter(){
-        testOnePar(x-> System.out.println(x));
+        MyFunctionalInterface2 myFunctionalInterface2 = (msg1,msg2)->{
+            System.out.println(msg1+","+msg2);
+            return msg1+msg2;
+        };
+        myFunctionalInterface2.single2("ww", "ffff");
+        
     }
 }

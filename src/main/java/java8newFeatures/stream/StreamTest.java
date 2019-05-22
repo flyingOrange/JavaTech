@@ -151,7 +151,6 @@ public class StreamTest {
         stream = Arrays.stream(new Integer[] { 1, 2, 3, 4, 5, 6, 7 });
         stream.reduce(Integer::min).ifPresent(System.out::println);
 
-
     }
 
     /*
@@ -161,26 +160,16 @@ public class StreamTest {
     @Test
     public void collect() {
         // 将Stream转换成容器或list,set,map
-        Stream<String> stream = Stream.of("I", "love", "you", "too");
+        Stream<String> stream = Stream.of("II", "lovelove", "youyou", "tootoo");
         List<String> list = stream.collect(Collectors.toList());
         System.out.println(list);
-        Stream<String> stream2 = Stream.of("I", "love", "you", "too");
+        Stream<String> stream2 = Stream.of("III", "lovelovelove", "youyouyou", "tootootoo");
         Set<String> set = stream2.collect(Collectors.toSet());
         System.out.println(set);
         Stream<String> stream3 = Stream.of("I", "love", "you", "too");
         Map<String, Integer> map = stream3.collect(Collectors.toMap(Function.identity(), String::length));
         System.out.println(map);
-
-        // 1.目标容器是什么？
-        // 2.新元素如何添加到容器中？
-        // 3.多个部分结果如何合并成一个
-        // <R> R collect(Supplier<R> supplier, BiConsumer<R,? super T>
-        // accumulator, BiConsumer<R,R> combiner)
-        // Collectors提供常见的收集器toList() toSet() toMap()
-        Stream<String> stream4 = Stream.of("I", "love", "you", "too");
-        Stream<String> stream5 = Stream.of("I", "love", "you", "too");
-        List<String> result1 = stream4.collect(ArrayList::new, ArrayList::add, ArrayList::addAll);// 方式１
-        List<String> result2 = stream5.collect(Collectors.toList());// 方式2
+        
         List<Student> result3 = new ArrayList<Student>() {
             {
                 add(new Student(1, "zhangsan", 77.5));
@@ -189,9 +178,11 @@ public class StreamTest {
             }
         };
         Map<Integer, Student> hashMap = result3.stream().collect(Collectors.toMap(Student::getId, student -> student));
-        System.out.println(result1);
-        System.out.println(result2);
         System.out.println(hashMap);
+        System.out.println("=======================排序==================================");
+        result3.sort((ele1,ele2)->ele2.getId()-ele1.getId());
+        System.out.println(result3);
+        
 
         // 使用toCollection()指定规约容器的类型
         // 由于返回结果是接口类型，我们并不知道类库实际选择的容器类型是什么，有时候我们可能会想要人为指定容器的实际类型，
