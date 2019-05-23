@@ -189,6 +189,13 @@ public class StreamTest {
 				.collect(Collectors.groupingBy(Student::getMajor, Collectors.counting()));
 		System.out.println(map3);
 
+	    System.out.println("=======================元素拼接==================================");
+		String join1 = result3.stream().map(Student::getName).collect(Collectors.joining());
+		String join2 = result3.stream().map(Student::getName).collect(Collectors.joining(", "));
+		System.out.println(join1);
+		System.out.println(join2);
+        
+		
 		// 使用toCollection()指定规约容器的类型
 		// 由于返回结果是接口类型，我们并不知道类库实际选择的容器类型是什么，有时候我们可能会想要人为指定容器的实际类型，
 		// 这个需求可通过Collectors.toCollection(Supplier<C>collectionFactory)方法完成

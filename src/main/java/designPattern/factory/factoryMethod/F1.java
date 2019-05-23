@@ -1,4 +1,4 @@
-package designPattern.factoryMethod;
+package designPattern.factory.factoryMethod;
 
 public class F1 implements Food{
 
