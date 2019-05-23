@@ -4,7 +4,7 @@ public class F2 implements Food{
 
 	@Override
 	public String foodName() {
-		return "大米";
+		return "F2大米";
 	}
 
 }
