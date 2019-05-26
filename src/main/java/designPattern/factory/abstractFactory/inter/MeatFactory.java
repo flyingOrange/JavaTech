@@ -1,6 +1,4 @@
-package designPattern.factory.abstractFactory;
-
-import designPattern.factory.abstractFactory.inter.Meat;
+package designPattern.factory.abstractFactory.inter;
 
 public interface MeatFactory {
     //实例化Pork
