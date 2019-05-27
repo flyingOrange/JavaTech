@@ -1,7 +1,9 @@
 package designPattern.protype;
 
+import java.io.Serializable;
+
 //原型模式就是讲一个对象作为原型，使用clone()方法来创建新的实例。
-public class Prototype implements Cloneable {
+public class Prototype implements Cloneable,Serializable {
 
 	private String name;
 
