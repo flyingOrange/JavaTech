@@ -2,6 +2,9 @@ package designPattern.proxy.dynamicProxy;
 
 import java.lang.reflect.Proxy;
 
+import designPattern.proxy.RealSubject;
+import designPattern.proxy.Subject;
+
 /*动态代理有两种，jdk提供的和cglib
  * jdk动态代理不需要我们手写ProxySubject，而是jdk生成的
  * 

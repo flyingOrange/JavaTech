@@ -1,5 +1,8 @@
 package designPattern.proxy.staticProxy;
 
+import designPattern.proxy.RealSubject;
+import designPattern.proxy.Subject;
+
 public class ProxySubject implements Subject{
     private RealSubject realSubject;
     

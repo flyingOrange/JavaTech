@@ -1,4 +1,4 @@
-package designPattern.proxy.staticProxy;
+package designPattern.proxy;
 
 public interface Subject {
     
