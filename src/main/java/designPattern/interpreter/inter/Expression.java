@@ -1,0 +1,7 @@
+package designPattern.interpreter.inter;
+
+public interface Expression {
+    
+    public boolean interpret(String context);
+    
+ }
