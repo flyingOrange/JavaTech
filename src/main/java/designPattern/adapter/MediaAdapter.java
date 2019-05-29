@@ -1,5 +1,8 @@
 package designPattern.adapter;
 
+import designPattern.adapter.inter.AdvancedMediaPlayer;
+import designPattern.adapter.inter.MediaPlayer;
+
 //MediaPlayer 接口的适配器类。
 public class MediaAdapter implements MediaPlayer {
 

@@ -1,5 +1,7 @@
 package designPattern.adapter;
 
+import designPattern.adapter.inter.AdvancedMediaPlayer;
+
 public class VlcPlayer implements AdvancedMediaPlayer{
 
     @Override

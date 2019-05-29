@@ -1,4 +1,4 @@
-package designPattern.adapter;
+package designPattern.adapter.inter;
 
 public interface MediaPlayer {
 	public void play(String audioType, String fileName);
