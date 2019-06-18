@@ -13,7 +13,7 @@ public class SendGroupEmail {
 
 	public static void main(String[] args) throws ClassNotFoundException,
 			SQLException, InterruptedException {
-		String URL = "jdbc:mysql://45.32.58.78:3306/ss45.32.58.78?useUnicode=true&amp;characterEncoding=utf-8";
+		String URL = "jdbc:mysql://localhost:3306/shiro?useUnicode=true&amp;characterEncoding=utf-8";
 		String USER = "root";
 		String PASSWORD = "000orange";
 		Class.forName("com.mysql.jdbc.Driver");
