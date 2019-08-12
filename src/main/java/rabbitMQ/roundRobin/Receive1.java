@@ -1,4 +1,4 @@
-package rabbitMQ.work;
+package rabbitMQ.roundRobin;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
@@ -11,7 +11,7 @@ import com.rabbitmq.client.Envelope;
 
 import rabbitMQ.util.ConnectionUtil;
 
-public class Receive {
+public class Receive1 {
 	private static String QUEUE_NAME = "test_work_queue";
 
 	public static void main(String[] args) throws IOException, TimeoutException {
@@ -26,13 +26,19 @@ public class Receive {
 			public void handleDelivery(String consumerTag, Envelope envelope, BasicProperties properties, byte[] body)
 					throws IOException {
 				String msg = new String(body,"utf-8");
-				System.out.println("receive:"+msg);
+				System.out.println("[1] receive:"+msg);
 			
+				try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 			}
 		};
 		
+		boolean autoAck = true;
 		//监听队列
-		channel.basicConsume(QUEUE_NAME, true,Consumer);
+		channel.basicConsume(QUEUE_NAME, autoAck,Consumer);
 		
 	}
 }

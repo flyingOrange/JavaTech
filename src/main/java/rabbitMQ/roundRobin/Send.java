@@ -1,4 +1,4 @@
-package rabbitMQ.work;
+package rabbitMQ.roundRobin;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
@@ -20,9 +20,9 @@ public class Send {
 		channel.queueDeclare(QUEUE_NAME, false, false, false, null);
 		
 		for(int i = 0;i<50;i++) {
-			String msg = "hello work q";
+			String msg = "hello work"+i;
 			channel.basicPublish("", QUEUE_NAME, null, msg.getBytes());
-
+			System.out.println("send msg:"+msg);
 			Thread.sleep(1*20);
 		}
 
