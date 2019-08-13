@@ -11,8 +11,8 @@ import com.rabbitmq.client.Envelope;
 
 import rabbitMQ.util.ConnectionUtil;
 
-public class Receive1 {
-    private static String QUEUE_NAME = "test_work_queue_1";
+public class Receive2 {
+    private static String QUEUE_NAME = "test_work_queue_2";
     private static String EXCHANGE_NAME = "test_exchange";
 
 	public static void main(String[] args) throws IOException, TimeoutException {
@@ -23,7 +23,7 @@ public class Receive1 {
 		channel.queueDeclare(QUEUE_NAME, false, false, false, null);
 		
 		//绑定队列到交换机
-        channel.queueBind(QUEUE_NAME, EXCHANGE_NAME, "goods.add");
+        channel.queueBind(QUEUE_NAME, EXCHANGE_NAME, "goods.#");
         
 	    //保证一次只分发一个
         channel.basicQos(1);
