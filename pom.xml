@@ -153,6 +153,12 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.6</version>
 		</dependency>
+		<!-- spring集成rabbitmq-client -->
+		<dependency>
+			<groupId>org.springframework.amqp</groupId>
+			<artifactId>spring-rabbit</artifactId>
+			<version>2.1.8.RELEASE</version>
+		</dependency>
 
 
 
@@ -220,21 +226,21 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-            <groupId>javax.websocket</groupId>
-            <artifactId>javax.websocket-client-api</artifactId>
-            <version>1.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.tyrus.bundles</groupId>
-            <artifactId>tyrus-standalone-client</artifactId>
-            <version>1.9</version>
-        </dependency>
+			<groupId>javax.websocket</groupId>
+			<artifactId>javax.websocket-client-api</artifactId>
+			<version>1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.tyrus.bundles</groupId>
+			<artifactId>tyrus-standalone-client</artifactId>
+			<version>1.9</version>
+		</dependency>
 		<!-- rabbitmq -->
-        <dependency>
-        	<groupId>com.rabbitmq</groupId>
-        	<artifactId>amqp-client</artifactId>
-        	<version>5.7.3</version>
-        </dependency>
+		<dependency>
+			<groupId>com.rabbitmq</groupId>
+			<artifactId>amqp-client</artifactId>
+			<version>5.7.3</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>JavaTech</finalName>
