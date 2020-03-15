@@ -1,4 +1,4 @@
-package algorithmProblem;
+package algorithmProblem.dataStructure;
 
 public class SortMethod {
 	

@@ -1,4 +1,4 @@
-package algorithmProblem;
+package algorithmProblem.dataStructure;
 
 import java.util.HashMap;
 import java.util.Map.Entry;

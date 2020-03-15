@@ -17,7 +17,7 @@
 		<dependency>
 			<groupId>io.netty</groupId>
 			<artifactId>netty-all</artifactId>
-			<version>4.1.15.Final</version>
+			<version>4.1.47.Final</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -245,8 +245,8 @@
 	<build>
 		<finalName>JavaTech</finalName>
 		<defaultGoal>compile</defaultGoal>
-		<plugins>
-			<!-- Compiler 插件, 设定JDK版本 -->
+<!-- 		<plugins>
+			Compiler 插件, 设定JDK版本
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -256,7 +256,7 @@
 					<target>1.8</target>
 					<showWarnings>true</showWarnings>
 				</configuration>
-			</plugin>
-		</plugins>
+			</plugin> 
+		</plugins> -->
 	</build>
 </project>
