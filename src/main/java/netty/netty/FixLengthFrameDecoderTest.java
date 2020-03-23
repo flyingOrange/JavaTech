@@ -1,4 +1,4 @@
-package netty;
+package netty.netty;
 
 import static org.junit.Assert.*;
 

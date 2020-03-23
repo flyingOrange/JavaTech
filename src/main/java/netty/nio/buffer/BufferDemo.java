@@ -1,4 +1,4 @@
-package netty.nio;
+package netty.nio.buffer;
 
 import java.nio.IntBuffer;
 
