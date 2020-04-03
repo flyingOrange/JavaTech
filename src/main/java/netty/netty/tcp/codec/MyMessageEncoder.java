@@ -1,0 +1,18 @@
+package netty.netty.tcp.codec;
+
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.MessageToByteEncoder;
+import netty.netty.tcp.protocol.MessageProtocol;
+
+public class MyMessageEncoder extends MessageToByteEncoder<MessageProtocol>{
+
+	@Override
+	protected void encode(ChannelHandlerContext ctx, MessageProtocol msg, ByteBuf out) throws Exception {
+		System.out.println("MyMessageEncoder被调用");
+		out.writeInt(msg.getLen());
+		out.writeBytes(msg.getContent());
+		
+	}
+
+}

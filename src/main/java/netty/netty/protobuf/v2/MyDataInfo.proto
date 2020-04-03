@@ -1,0 +1,31 @@
+syntax = "proto3";
+option java_outer_classname = "MyDataInfo";//生成的外部类类名,也是文件名
+
+//使用message管理其它message
+message MyMessage{
+
+	//定义一个枚举没型
+	enum DataType{
+		StudentType = 0;//proto3要求enum序号从0开始
+		WorkerType = 1;
+	}
+
+	DataType data_type = 1;//标识传来的是哪一个类型
+
+	//表示每次最多出现只能出现其中一个
+	oneof dataBody{
+		Student student = 2;
+		Worker worker = 3;
+	}
+
+}
+
+message Student{//在StudentPOJO内部生成一个内部类Student,它是真正发送的对象
+	int32 id = 1;//Student内一个属性名为id,类型是int32,1仅代表属性序号
+	string name = 2;
+
+}
+message Worker{
+	string name = 1;
+	int32 age = 2;
+}

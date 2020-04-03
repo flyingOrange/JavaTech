@@ -12,6 +12,10 @@ import io.netty.util.CharsetUtil;
 
 public class NettyServerHandler extends ChannelInboundHandlerAdapter {
 
+	//定义一个channel组管理所有channel，在连接后把channel添加到  channelGroup
+	//GlobalEventExecutor.INSTANCE是全局事件执行器，是单例
+	//private static ChannelGroup channelGroup = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
+	
 	/*
 	 * ChannelHandlerContext cxt:上下文对象，含有pipeline、channel、地址等 Object msg:客户端发送的数据
 	 * 

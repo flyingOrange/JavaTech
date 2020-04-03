@@ -1,16 +1,15 @@
-package netty.netty.simple;
-
-import java.util.concurrent.TimeUnit;
+package netty.netty.protobuf.v1;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
+import io.netty.channel.ChannelPipeline;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.timeout.IdleStateHandler;
+import io.netty.handler.codec.protobuf.ProtobufDecoder;
 
 public class NettyServer {
 
@@ -33,17 +32,11 @@ public class NettyServer {
 						// 给pipeline设置处理器
 						@Override
 						protected void initChannel(SocketChannel ch) throws Exception {
-							//可以把客户端所有的SocketChannel ch保存到一个集合，用于推送消息时使用
-							ch.pipeline().addLast(new NettyServerHandler());
+							ChannelPipeline pipeline = ch.pipeline();
+							//加入protobuf解码器
 							
-							/*
-							 * 3 代表多久没读
-							 * 5 代表多久没写
-							 * 7 代表多久没读写
-							 * */
-							ch.pipeline().addLast(new IdleStateHandler(3, 5, 7,TimeUnit.SECONDS));
-							//加入一个对空闲检测处理的handler
-							ch.pipeline().addLast(new HeartBeatHandler());
+							pipeline.addLast(new ProtobufDecoder(StudentPOJO.Student.getDefaultInstance()));
+							pipeline.addLast(new NettyServerHandler());
 							
 						}
 					});
