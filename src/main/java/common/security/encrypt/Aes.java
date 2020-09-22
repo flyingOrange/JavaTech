@@ -30,13 +30,14 @@ public class Aes {
 	/**
 	* 加密算法   
 	*	 加密解密算法/工作模式/填充方式
+	*	CBC工作方式时需要IV向量
 	*/
 	public static final String CIPHER_ALGORITHM = "AES/ECB/PKCS5Padding";
 
 	/*
 	 * 1.构造密钥生成器 2.根据password规则初始化密钥生成器 3.产生密钥 4.创建和初始化密码器 5.内容加密 6.返回字符串
 	 */
-	public static String AESencode(String password, String content) {
+	public static byte[] AESencode(String password, byte[] content) {
 
 		// 1.构造密钥生成器，指定为AES算法,不区分大小写
 		try {
@@ -59,7 +60,7 @@ public class Aes {
 			// 7.初始化密码器，第一个参数为加密(Encrypt_mode)或者解密解密(Decrypt_mode)操作，第二个参数为使用的KEY
 			cipher.init(Cipher.ENCRYPT_MODE, key);
 			// 8.获取加密内容的字节数组(这里要设置为utf-8)不然内容中如果有中文和英文混合中文就会解密为乱码
-			byte[] byte_encode = content.getBytes("utf-8");
+			byte[] byte_encode = content;
 			System.out.println("加密前16进制字符串:"+ Hex.encodeHexString(byte_encode) +"\n加密前base64: "+Base64.encodeBase64String(byte_encode));
 			// 9.根据密码器的初始化方式--加密：将数据加密
 			byte[] byte_AES = cipher.doFinal(byte_encode);
@@ -67,16 +68,14 @@ public class Aes {
 			String result = Hex.encodeHexString(byte_AES);
 			String result2 = Base64.encodeBase64String(byte_AES);
 			System.out.println("加密后16进制字符串:" + result+"\n加密后base64编码:"+result2);
-			return result;
+			return byte_AES;
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		} catch (NoSuchPaddingException e) {
 			e.printStackTrace();
 		} catch (InvalidKeyException e) {
 			e.printStackTrace();
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		} catch (IllegalBlockSizeException e) {
+		}catch (IllegalBlockSizeException e) {
 			e.printStackTrace();
 		} catch (BadPaddingException e) {
 			e.printStackTrace();
@@ -88,7 +87,7 @@ public class Aes {
 	 * 解密 解密过程： 1.同加密1-4步 2.将加密后的字符串反纺成byte[]数组 3.将加密内容解密
 	 */
 	@Test
-	public static String AESdecode(String password, String content) {
+	public static String AESdecode(String password, byte[] content) {
 		try {
 			// 1.构造密钥生成器，指定为AES算法,不区分大小写
 			KeyGenerator keygen = KeyGenerator.getInstance(KEY_ALGORITHM);
@@ -114,7 +113,9 @@ public class Aes {
 			 * :加密后的byte数组是不能强制转换成字符串的，换言之：字符串和byte数组在这种情况下不是互逆的；要避免这种情况，我们需要做一些修订，
 			 * 可以考虑将二进制数据转换成十六进制表示
 			 */
-			byte[] byte_content = Hex.decodeHex(content.toCharArray());
+			//byte[] byte_content = Hex.decodeHex(content.toCharArray());
+			byte[] byte_content = content;
+			
 			/*
 			 * 解密
 			 */
@@ -137,17 +138,15 @@ public class Aes {
 			e.printStackTrace();
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
-		} catch (DecoderException e) {
-            e.printStackTrace();
-        }
+		}
 
 		return null;
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws UnsupportedEncodingException {
 		String content = "test郑程";
-		String password = "12345678";
-		String afterEncrypt = Aes.AESencode(password, content);
+		String password = "test";
+		byte[] afterEncrypt = Aes.AESencode(password, content.getBytes("utf-8"));
 		Aes.AESdecode(password, afterEncrypt);
 	}
 

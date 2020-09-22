@@ -24,12 +24,6 @@
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
 		</dependency>
-		<!-- activemq -->
-		<dependency>
-			<groupId>org.apache.activemq</groupId>
-			<artifactId>activemq-client</artifactId>
-			<version>5.13.2</version>
-		</dependency>
 		<!-- log -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -192,11 +186,6 @@
 		</dependency>
 		<!-- json -->
 		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>fastjson</artifactId>
-			<version>1.2.54</version>
-		</dependency>
-		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 			<version>2.8.5</version>
@@ -209,6 +198,11 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>
+			<version>2.9.7</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
 			<version>2.9.7</version>
 		</dependency>
 		<!-- redis.clients/jedis -->
@@ -245,18 +239,9 @@
 	<build>
 		<finalName>JavaTech</finalName>
 		<defaultGoal>compile</defaultGoal>
-<!-- 		<plugins>
-			Compiler 插件, 设定JDK版本
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.5.1</version>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-					<showWarnings>true</showWarnings>
-				</configuration>
-			</plugin> 
-		</plugins> -->
+		<!-- <plugins> Compiler 插件, 设定JDK版本 <plugin> <groupId>org.apache.maven.plugins</groupId> 
+			<artifactId>maven-compiler-plugin</artifactId> <version>3.5.1</version> <configuration> 
+			<source>1.8</source> <target>1.8</target> <showWarnings>true</showWarnings> 
+			</configuration> </plugin> </plugins> -->
 	</build>
 </project>

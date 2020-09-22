@@ -46,16 +46,16 @@ public class TestCommon {
 		// System.out.println(objs2[0]);
 
 		// 遍历hashMap
-		// HashMap<String, String> hm = new HashMap<String, String>();
-		// hm.put("key1", "orange");
-		// hm.put("key2", "hello");
-		// hm.put("key3", "wind");
-		// hm.put("key4", "tommy");
-		// hm.put("key5", "gaga");
-		// for(Entry<String, String> entry : hm.entrySet())
-		// System.out.println(entry.getKey()+"   "+entry.getValue());
-		// for(String key : hm.keySet())
-		// System.out.println(key);
+		 HashMap<String, String> hm = new HashMap<String, String>();
+		 hm.put("key1", "orange");
+		 hm.put("key2", "hello");
+		 hm.put("key3", "wind");
+		 hm.put("key4", "tommy");
+		 hm.put("key5", "gaga");
+		 for(Entry<String, String> entry : hm.entrySet())
+		 System.out.println(entry.getKey()+"   "+entry.getValue());
+		 for(String key : hm.keySet())
+		 System.out.println(key);
 
 		// String s1 = "ha";
 		// String s2 = new String("ha");
@@ -80,22 +80,6 @@ public class TestCommon {
 		System.out.println(list1);
 	}
 
-	/**
-	 * 将二进制转换成16进制
-	 * 
-	 * @param buf
-	 * @return
-	 */
-	public static String parseByte2HexStr(byte buf[]) {
-		StringBuffer sb = new StringBuffer();
-		for (int i = 0; i < buf.length; i++) {
-			String hex = Integer.toHexString(buf[i] & 0xFF);
-			if (hex.length() == 1) {
-				hex = '0' + hex;
-			}
-			sb.append(hex.toUpperCase());
-		}
-		return sb.toString();
-	}
+
 
 }
