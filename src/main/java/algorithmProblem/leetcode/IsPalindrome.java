@@ -20,8 +20,6 @@ package algorithmProblem.leetcode;
 * */
 public class IsPalindrome {
     public boolean isPalindrome(int x) {
-        if(x<0)
-            return false;
         String positive = String.valueOf(x);
         //反转字符串
         StringBuilder sb = new StringBuilder(positive);
@@ -34,7 +32,7 @@ public class IsPalindrome {
     }
 
     public static void main(String[] args) {
-        System.out.println(new IsPalindrome().isPalindrome(1113));
+        System.out.println(new IsPalindrome().isPalindrome(-111));
     }
 
 }
