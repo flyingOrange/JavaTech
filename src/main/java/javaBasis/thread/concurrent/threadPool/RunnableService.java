@@ -1,4 +1,4 @@
-package javaBasis.thread.threadPool;
+package javaBasis.thread.concurrent.threadPool;
 
 public class RunnableService implements Runnable{
 	
