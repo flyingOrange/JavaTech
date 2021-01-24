@@ -10,11 +10,11 @@ LinkedBlockingQueue中的锁是分离的，生产者的锁PutLock，消费者的
 * */
 public class LinkedBlockingQueueDemo {
     public static void main(String[] args) throws InterruptedException {
-        LinkedBlockingQueue<Integer> bp = new LinkedBlockingQueue<Integer>(3);
+        LinkedBlockingQueue<Integer> blockingQueue = new LinkedBlockingQueue<Integer>(3);
         try {
-            bp.put(1);
-            bp.put(2);
-            bp.put(3);
+            blockingQueue.put(1);
+            blockingQueue.put(2);
+            blockingQueue.put(3);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -26,7 +26,7 @@ public class LinkedBlockingQueueDemo {
                     try {
                         int i = new Random().nextInt(100);
                         Thread.sleep(2000);
-                        bp.put(i);
+                        blockingQueue.put(i);
                         System.out.println("put from producer:  "+ i );
                     } catch (InterruptedException e) {
                     }
@@ -39,7 +39,7 @@ public class LinkedBlockingQueueDemo {
             public void run() {
                 while (true){
                     try {
-                        Integer i = bp.take();
+                        Integer i = blockingQueue.take();
                         System.out.println("take from consumer: " + i);
                     } catch (InterruptedException e) {
                     }
