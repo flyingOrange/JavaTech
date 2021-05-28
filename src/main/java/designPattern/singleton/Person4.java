@@ -1,8 +1,11 @@
 package designPattern.singleton;
 
-//双重检查
+//双重检查DCL(double check lock)
 public class Person4 {
-	private static Person4 person;
+	/*
+	* 注意此处要加volatile,因为存在指令重排序问题，返回一个半初始化对象。
+	* */
+	private static volatile Person4 person;
 	
 	private String name;
 
@@ -22,7 +25,7 @@ public class Person4 {
 			synchronized(Person4.class) {
 				//双重检查
 				if(person == null)
-					return new Person4();
+					return new Person4();//volatile禁止指令重排
 			}
 		}
 		return person;
