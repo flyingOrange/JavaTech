@@ -1,5 +1,5 @@
 package designPattern.facade;
-
+//外观模式
 public class Facade {
     private SystemA systemA;
     private SystemB systemB;

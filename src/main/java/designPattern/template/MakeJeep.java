@@ -10,13 +10,11 @@ public class MakeJeep extends MakeCar {
 	@Override
 	public void makeBody() {
 		System.out.println("jeep:组装车身");
-		
 	}
 
 	@Override
 	public void makeTail() {
 		System.out.println("jeep:组装车尾");
-		
 	}
 
 }

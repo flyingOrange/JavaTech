@@ -1,6 +1,6 @@
 package designPattern.factory.factoryMethod;
 
-public class Main {
+public class MainClass {
 
     public static void main(String[] args) {
         /*
