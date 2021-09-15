@@ -1,26 +1,26 @@
 package net.http.httpClient;
 
+import org.apache.hc.client5.http.ClientProtocolException;
+import org.apache.hc.client5.http.classic.methods.HttpGet;
+import org.apache.hc.client5.http.classic.methods.HttpPost;
+import org.apache.hc.client5.http.entity.UrlEncodedFormEntity;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.core5.http.HttpEntity;
+import org.apache.hc.core5.http.NameValuePair;
+import org.apache.hc.core5.http.ParseException;
+import org.apache.hc.core5.http.io.entity.EntityUtils;
+import org.apache.hc.core5.http.message.BasicNameValuePair;
+import org.apache.hc.core5.net.URIBuilder;
 import org.junit.Test;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.utils.URIBuilder;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.util.EntityUtils;
-import org.apache.http.message.BasicNameValuePair;
 
 public class UseHttpClient {
 
@@ -31,22 +31,24 @@ public class UseHttpClient {
 		CloseableHttpClient httpclient = HttpClients.createDefault();
 
 		// 创建http GET请求
-		//HttpGet httpGet = new HttpGet("http://hq.sinajs.cn/list=sh601006");
-		HttpGet httpGet = new HttpGet("https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/amd_modules/@baidu/search-sug/sug/index_e0150f3.js");
-		
+		HttpGet httpGet = new HttpGet("http://hq.sinajs.cn/list=sh601006");
+
 		CloseableHttpResponse response = null;
 		try {
 			// 执行请求
 			response = httpclient.execute(httpGet);
-			// 判断返回状态是否为200
-			if (response.getStatusLine().getStatusCode() == 200) {
-				// 获取服务端返回的数据
-				String content = EntityUtils.toString(response.getEntity(), "UTF-8");
-				// 服务端返回数据的长度
-				System.out.println("内容长度：" + content.length());
-				System.out.println(content);
-			}
-		} catch (Exception e) {
+			System.out.println(response.getCode() + " " + response.getReasonPhrase());
+			HttpEntity entity = response.getEntity();
+			// 获取服务端返回的数据
+			String content = EntityUtils.toString(entity, "UTF-8");
+			EntityUtils.consume(entity);
+			// 服务端返回数据的长度
+			System.out.println("内容长度：" + content.length());
+			System.out.println(content);
+
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (ParseException e) {
 			e.printStackTrace();
 		} finally {
 			if (response != null) {
@@ -78,13 +80,17 @@ public class UseHttpClient {
 		try {
 			// 执行请求
 			response = httpclient.execute(httpGet);
-			// 判断返回状态是否为200
-			if (response.getStatusLine().getStatusCode() == 200) {
-				// 获取服务端，响应的数据
-				String content = EntityUtils.toString(response.getEntity(), "UTF-8");
-				System.out.println(content);
-			}
+			System.out.println(response.getCode() + " " + response.getReasonPhrase());
+			HttpEntity entity = response.getEntity();
+			// 获取服务端返回的数据
+			String content = EntityUtils.toString(entity, "UTF-8");
+			EntityUtils.consume(entity);
+			// 服务端返回数据的长度
+			System.out.println("内容长度：" + content.length());
+			System.out.println(content);
 		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (ParseException e) {
 			e.printStackTrace();
 		} finally {
 			if (response != null) {
@@ -111,13 +117,17 @@ public class UseHttpClient {
 		try {
 			// 执行请求
 			response = httpclient.execute(httpPost);
-			// 判断返回状态是否为200
-			if (response.getStatusLine().getStatusCode() == 200) {
-				// 获取服务端，响应的数据
-				String content = EntityUtils.toString(response.getEntity(), "UTF-8");
-				System.out.println(content);
-			}
+			System.out.println(response.getCode() + " " + response.getReasonPhrase());
+			HttpEntity entity = response.getEntity();
+			// 获取服务端返回的数据
+			String content = EntityUtils.toString(entity, "UTF-8");
+			EntityUtils.consume(entity);
+			// 服务端返回数据的长度
+			System.out.println("内容长度：" + content.length());
+			System.out.println(content);
 		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (ParseException e) {
 			e.printStackTrace();
 		} finally {
 			if (response != null) {
@@ -153,13 +163,17 @@ public class UseHttpClient {
 		try {
 			// 执行请求
 			response = httpclient.execute(httpPost);
-			// 判断返回状态是否为200
-			if (response.getStatusLine().getStatusCode() == 200) {
-				// 获取服务端响应的数据
-				String content = EntityUtils.toString(response.getEntity(), "UTF-8");
-				System.out.println(content);
-			}
+			System.out.println(response.getCode() + " " + response.getReasonPhrase());
+			HttpEntity entity = response.getEntity();
+			// 获取服务端返回的数据
+			String content = EntityUtils.toString(entity, "UTF-8");
+			EntityUtils.consume(entity);
+			// 服务端返回数据的长度
+			System.out.println("内容长度：" + content.length());
+			System.out.println(content);
 		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (ParseException e) {
 			e.printStackTrace();
 		} finally {
 			if (response != null) {
