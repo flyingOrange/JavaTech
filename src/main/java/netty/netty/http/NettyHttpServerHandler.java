@@ -1,22 +1,10 @@
 package netty.netty.http;
 
-import java.net.URI;
-
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import io.netty.channel.group.ChannelGroup;
-import io.netty.channel.group.DefaultChannelGroup;
-import io.netty.handler.codec.http.DefaultFullHttpResponse;
-import io.netty.handler.codec.http.FullHttpResponse;
-import io.netty.handler.codec.http.HttpHeaderNames;
-import io.netty.handler.codec.http.HttpObject;
-import io.netty.handler.codec.http.HttpRequest;
-import io.netty.handler.codec.http.HttpResponseStatus;
-import io.netty.handler.codec.http.HttpVersion;
-import io.netty.util.CharsetUtil;
-import io.netty.util.concurrent.GlobalEventExecutor;
+import io.netty.handler.codec.http.*;
+
+import java.net.URI;
 
 /*
  * SimpleChannelInboundHandler是ChannelInboundHandlerAdapter子类
@@ -46,14 +34,18 @@ public class NettyHttpServerHandler extends SimpleChannelInboundHandler<HttpObje
 			}
 			
 			// 回复信息给浏览器
-			ByteBuf content = Unpooled.copiedBuffer("hello,浏览器", CharsetUtil.UTF_8);
 			// 构造一个http响应
-			FullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK,
-					content);
+			byte[] bytes = "hello,浏览器".getBytes();
+			FullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK);
 			response.headers().set(HttpHeaderNames.CONTENT_TYPE,"text/plain");
-			response.headers().set(HttpHeaderNames.CONTENT_LENGTH,content.readableBytes());
+			response.headers().set(HttpHeaderNames.CONTENT_LENGTH,bytes.length);
+
+			response.content().writeBytes(bytes);
 		
 			ctx.writeAndFlush(response);
+		}else if(msg instanceof HttpContent){
+
+
 		}
 	}
 

@@ -6,6 +6,8 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.http.HttpServerCodec;
+import io.netty.handler.logging.LogLevel;
+import io.netty.handler.logging.LoggingHandler;
 
 public class NettyHttpServer {
 
@@ -24,6 +26,7 @@ public class NettyHttpServer {
 						protected void initChannel(SocketChannel ch) throws Exception {
 							//使用netty提供的http解码器
 							ChannelPipeline channelPipeline = ch.pipeline();
+							channelPipeline.addLast(new LoggingHandler(LogLevel.DEBUG));
 							channelPipeline.addLast("httpServerCodec",new HttpServerCodec());
 							channelPipeline.addLast("myself",new NettyHttpServerHandler());
 
