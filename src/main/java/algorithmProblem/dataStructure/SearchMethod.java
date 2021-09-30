@@ -1,9 +1,6 @@
 package algorithmProblem.dataStructure;
 
-import java.util.HashMap;
-import java.util.Map.Entry;
-
-public class searchMethod {
+public class SearchMethod {
 
 	//二分查找(非递归二分查找算法 )
 	public static int binarySearch1(int[] array, int value)
