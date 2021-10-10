@@ -9,13 +9,10 @@ public class SortMethod {
 	 * */
 	public static void BubbleSort(int a[])
 	{
-		int N = a.length;   
-		for(int i =0 ; i< N; i++)
-		{
-			for(int j=0;j<N-i-1;j++)
-			{
-				if(a[j] > a[j+1])  
-		        { 
+		int len = a.length;
+		for(int i =0 ; i< len; i++){//i代表趟数，如5个元素需要4趟
+			for(int j=0;j<len-i-1;j++){//j代表每一趟从第0个元素排到第j个元素
+				if(a[j] > a[j+1]){
 					swap(a,j,j+1);
 		        }
 			}
@@ -24,15 +21,17 @@ public class SortMethod {
 	
 	/*
 	 * 快速排序
-	 * 
+	 * 从数列中挑出一个元素，称为 “基准”（pivot）;重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。
+	 * 在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作；递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序
 	 * */
 	public static void quickSort(int a[],int low,int high)
 	{
 		if(high<=low)
 			return;
-		int j = partition(a, low, high);
-		quickSort(a,low,j-1);
-		quickSort(a,j+1,high);
+		int index = partition(a, low, high);
+		System.out.println("index="+index);
+		quickSort(a,low,index-1);
+		quickSort(a,index+1,high);
 	}
 	
 	
@@ -68,8 +67,7 @@ public class SortMethod {
 	 * 最好情况(数据已经有序)：比较N-1次
 	 * 
 	 * */
-	public static void insertSort(int []a)
-	{
+	public static void insertSort(int []a) {
 		int N = a.length;
 		for(int i=1;i<N;i++)
 		{
@@ -108,8 +106,11 @@ public class SortMethod {
 				{
 					min = j;
 				}
-				//从第i+1--N个元素中选择最小的互换
-				swap(a,i,min);
+				if(i != min){
+					//从第i+1--N个元素中选择最小的互换
+					swap(a,i,min);
+				}
+
 			}
 			
 		}
@@ -153,15 +154,12 @@ public class SortMethod {
 		int i = low;
 		int j = high+1;
 		int key = a[low];//切分元素
-		while(true)
-		{
-			while(less(a[++i],key))
-			{
+		while(true){
+			while(less(a[++i],key)){
 				if(i == high)
 					break;
 			}
-			while(less(key,a[--j]))
-			{
+			while(less(key,a[--j])){
 				if(j == low)
 					break;
 			}
@@ -174,14 +172,29 @@ public class SortMethod {
 		return j;
 		
 	}
+
+	public static void review(int a[]){
+		int len = a.length;
+
+		for(int i=1;i<len;i++){
+
+
+
+		}
+
+	}
+
+
+
 	
 	public static void main(String[] args) {
 		int a[] = {2,9,4,6,3,8,1,7,5};
 		//SortMethod.simpleSelectSort(a);
 		//SortMethod.insertSort(a);
 		//SortMethod.shellSort(a);
-		SortMethod.quickSort(a,0,8);		
+		//SortMethod.quickSort(a,0,8);
 		//SortMethod.BubbleSort(a);
+		SortMethod.review(a);
 		SortMethod.show(a);
 	}
 	
