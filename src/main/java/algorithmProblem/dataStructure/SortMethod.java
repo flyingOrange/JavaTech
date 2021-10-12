@@ -178,8 +178,12 @@ public class SortMethod {
 
 		for(int i=1;i<len;i++){
 
+			for(int j=i;j>0;j--){
+				if(a[j]<a[j-1]){
+					swap(a,j,j-1);
+				}
 
-
+			}
 		}
 
 	}
