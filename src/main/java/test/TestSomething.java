@@ -1,12 +1,12 @@
 package test;
 
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class TestSomething {
 	
@@ -53,6 +53,11 @@ public class TestSomething {
 
         logger.warn("testlog: {}", "test");
 
+    }
+
+    @Test
+    public void testrefference() {
+        
     }
 
 }

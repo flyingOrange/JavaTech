@@ -1,35 +1,25 @@
 package javaBasis.reflect;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.lang.reflect.*;
-import java.util.Properties;
-
 public class TestReflect {
 
-	/**
-	 * @param args
-	 * @throws ClassNotFoundException 
-	 * @throws IllegalAccessException 
-	 * @throws InstantiationException 
-	 * @throws SecurityException 
-	 * @throws NoSuchMethodException 
-	 * @throws InvocationTargetException 
-	 * @throws IllegalArgumentException 
-	 * @throws IOException 
-	 */
-	public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, SecurityException, IllegalArgumentException, InvocationTargetException, IOException {
-//		Class<?> t= Class.forName("java.lang.String");
-//		Constructor ct = t.getConstructor(String.class);
-//		String ss = (String) ct.newInstance("GBK");
-//		System.out.println(ss);
-		
-		FileInputStream fs = new FileInputStream("src/test.properties");
-		Properties p = new Properties();
-		p.load(fs);
-		String path = p.getProperty("path");
-		String isReal = p.getProperty("isReal");
-		  
-		System.out.println(path+"|"+isReal);
+	public static void main(String[] args) {
+		printClassInfo("".getClass());
+		printClassInfo(Runnable.class);
+		printClassInfo(java.time.Month.class);
+		printClassInfo(String[].class);
+		printClassInfo(int.class);
+	}
+
+	static void printClassInfo(Class cls) {
+		System.out.println(".............................................");
+		System.out.println("Class name: " + cls.getName());
+		System.out.println("Simple name: " + cls.getSimpleName());
+		if (cls.getPackage() != null) {
+			System.out.println("Package name: " + cls.getPackage().getName());
+		}
+		System.out.println("is interface: " + cls.isInterface());
+		System.out.println("is enum: " + cls.isEnum());
+		System.out.println("is array: " + cls.isArray());
+		System.out.println("is primitive: " + cls.isPrimitive());
 	}
 
 }
