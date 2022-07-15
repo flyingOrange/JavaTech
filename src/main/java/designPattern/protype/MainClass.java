@@ -10,13 +10,15 @@ import java.util.List;
 
 public class MainClass {
     public static void main(String[] args) {
+        System.out.println("-----------------克隆的一般使用---------------------");
         // 克隆的一般使用
         Prototype pro1 = new Prototype();
         pro1.setName("hahaha");
-        System.out.println(pro1);
         Prototype pro2 = pro1.clone();
+        pro2.setName("NONONON");
+        System.out.println(pro1);
         System.out.println(pro2);
-        System.out.println("--------------------------------------");
+        System.out.println("-----------------潜拷贝---------------------");
         // 潜拷贝
         List<String> friends = new ArrayList<String>() {
             {
@@ -29,13 +31,14 @@ public class MainClass {
         p1.setName("kkk");
         p1.setFriends(friends);
         People p2 = p1.clone();
+        p2.setName("jjjjj");
         System.out.println(p1);
         System.out.println(p2);
         // 克隆时只复制了friends的引用地址，所以p1、p2共用一个friends引用，这是--潜克隆
         friends.add("lilei");
         System.out.println(p1);
         System.out.println(p2);
-        System.out.println("--------------------------------------");
+        System.out.println("-----------------深拷贝方法一---------------------");
         // 深拷贝方法一
         // 通过重写clone方法实现浅拷贝的基本思路一样，只需要为对象图的每一层的每一个对象都实现Cloneable接口并重写clone方法，
         //最后在最顶层的类的重写的clone方法中调用所有的clone方法即可实现深拷贝。简单的说就是：每一层的每个对象都进行浅拷贝=深拷贝
@@ -55,7 +58,7 @@ public class MainClass {
         newFriends.add("lilei");
         System.out.println(deepp1);
         System.out.println(deepp2);
-        System.out.println("--------------------------------------");
+        System.out.println("-----------------深拷贝方法二---------------------");
         // 深拷贝方法二
         //将对象序列化为字节序列后，默认会将该对象的整个对象图进行序列化，再通过反序列即可完美地实现深拷贝。
         DeepCopy dp = new DeepCopy();
