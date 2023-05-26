@@ -5,47 +5,37 @@ package javaBasis.thread;
  * 
  */
 
-class MyThread1 extends Thread
-{
+class MyThread1 extends Thread {
 	private Object lock;
-	public MyThread1(Object lock)
-	{
+	public MyThread1(Object lock) {
 		super();
 		this.lock = lock;
 	}
-	public void run()
-	{
+	public void run() {
 		try
 		{
-			synchronized(lock)
-			{
+			synchronized(lock) {
 				System.out.println("开始  wait time="+System.currentTimeMillis());
 				
 				lock.wait();
 				System.out.println("结束  wait time="+System.currentTimeMillis());
 			}
 			
-		}catch(InterruptedException e)
-		{
+		}catch(InterruptedException e) {
 			e.printStackTrace();
 		}
-		
-		
+
 	}
 }
 
-class MyThread2 extends Thread
-{
+class MyThread2 extends Thread {
 	private Object lock;
-	public MyThread2(Object lock)
-	{
+	public MyThread2(Object lock) {
 		super();
 		this.lock = lock;
 	}
-	public void run()
-	{
-		synchronized(lock)
-		{
+	public void run() {
+		synchronized(lock) {
 			System.out.println("开始  notify time="+System.currentTimeMillis());
 			
 			lock.notify();

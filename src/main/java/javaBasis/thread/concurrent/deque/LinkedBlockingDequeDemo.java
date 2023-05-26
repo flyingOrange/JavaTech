@@ -1,4 +1,4 @@
-package javaBasis.thread.concurrent.blockingqueue;
+package javaBasis.thread.concurrent.deque;
 /*
 类似 LinkedBlockingQueue，但提供了双向链表特有的操作。
 * */
@@ -7,4 +7,5 @@ public class LinkedBlockingDequeDemo {
         //有空再研究双向链表
         
     }
+
 }

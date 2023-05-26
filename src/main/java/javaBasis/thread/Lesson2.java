@@ -5,13 +5,10 @@ package javaBasis.thread;
  *两个线程访问同一对象中的同步方法    是安全的！
  *
  */
-class MuitiThread
-{
+class MuitiThread {
 	private int num = 0;
-	/*synchronized*/ void add(String username)
-	{
-		if(username.equals("a"))
-		{
+	/*synchronized*/ void add(String username) {
+		if(username.equals("a")) {
 			num = 100;
 			System.out.println("a set over");
 			try {
@@ -21,42 +18,33 @@ class MuitiThread
 				e.printStackTrace();
 			}
 		}
-		else
-		{
+		else {
 			num = 200;
 			System.out.println("b set over");
 			
 		}
 		System.out.println(username+"  num = "+num);
-			
-		
 	}
 
 }
-class ThreadA extends Thread
-{
+class ThreadA extends Thread {
 	private MuitiThread ref;
-	public ThreadA(MuitiThread ref)
-	{
+	public ThreadA(MuitiThread ref) {
 		this.ref = ref;
 	}
 	@Override
-	public void run()
-	{
+	public void run() {
 		ref.add("a");
 	}
 
 }
-class ThreadB extends Thread
-{
+class ThreadB extends Thread {
 	private MuitiThread ref;
-	public ThreadB(MuitiThread ref)
-	{
+	public ThreadB(MuitiThread ref) {
 		this.ref = ref;
 	}
 	@Override
-	public void run()
-	{
+	public void run() {
 		ref.add("b");
 	}
 
@@ -71,7 +59,6 @@ public class Lesson2 {
 		tB.start();
 		
 		/*
-		 
 		a set over
 		b set over
 		b  num = 200

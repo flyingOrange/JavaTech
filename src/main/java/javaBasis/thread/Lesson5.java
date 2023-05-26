@@ -5,21 +5,17 @@ package javaBasis.thread;
  volatile的作用是强制从公共堆栈中取得变量的值，而不是从线程私有数据栈中取得变量的值。
  volatile能保证可见性，但不能保证原子性。synchronized可以保证原子性，也间接保证了可见性
  */
-class RunThread extends Thread
-{
+class RunThread extends Thread {
 	volatile private boolean isRunning = true;
 	public void setRunning(boolean isRunning) {
 		this.isRunning = isRunning;
 	}
-	public boolean isRunning()
-	{
+	public boolean isRunning() {
 		return isRunning;
 	}
-	public void run()
-	{
+	public void run() {
 		System.out.println("进入run");
-		while(isRunning() == true)
-		{
+		while(isRunning() == true) {
 		}
 		System.out.println("线程被停止了");
 	}
@@ -28,7 +24,6 @@ class RunThread extends Thread
 
 public class Lesson5 {
 
-	
 	public static void main(String[] args) throws InterruptedException {
 		RunThread t = new RunThread();
 		t.start();

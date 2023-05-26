@@ -6,10 +6,8 @@ package javaBasis.thread;
  *
  */
 
-class Service
-{
-	synchronized public static void printA()
-	{
+class Service {
+	synchronized public static void printA() {
 		System.out.println("线程名:"+Thread.currentThread().getName()+"在"+System.currentTimeMillis()+"进入printA");
 		try {
 			Thread.sleep(3000);
@@ -19,60 +17,48 @@ class Service
 		System.out.println("线程名:"+Thread.currentThread().getName()+"在"+System.currentTimeMillis()+"离开printA");	
 	}
 	
-	synchronized public static void printB()
-	{
+	synchronized public static void printB() {
 		System.out.println("线程名:"+Thread.currentThread().getName()+"在"+System.currentTimeMillis()+"进入printB");
 		System.out.println("线程名:"+Thread.currentThread().getName()+"在"+System.currentTimeMillis()+"离开printB");
 		
 	}
-	synchronized public void printC()
-	{
+	synchronized public void printC() {
 		System.out.println("线程名:"+Thread.currentThread().getName()+"在"+System.currentTimeMillis()+"进入printC");
 		System.out.println("线程名:"+Thread.currentThread().getName()+"在"+System.currentTimeMillis()+"离开printC");	
 	}
 }
-class Thread1 extends Thread
-{
+class Thread1 extends Thread {
 	private Service service;
-	public Thread1(Service service)
-	{
+	public Thread1(Service service) {
 		this.service = service;
 	}
 	@Override
-	public void run()
-	{
+	public void run() {
 		Service.printA();
 	}
 }
-class Thread2 extends Thread
-{
+class Thread2 extends Thread {
 	private Service service;
-	public Thread2(Service service)
-	{
+	public Thread2(Service service) {
 		this.service = service;
 	}
 	@Override
-	public void run()
-	{
+	public void run() {
 		Service.printB();
 	}
 }
-class Thread3 extends Thread
-{
+class Thread3 extends Thread {
 	private Service service;
-	public Thread3(Service service)
-	{
+	public Thread3(Service service) {
 		this.service = service;
 	}
 	@Override
-	public void run()
-	{
+	public void run() {
 		service.printC();
 	}
 }
 public class Lesson3 {
 
-	
 	public static void main(String[] args) {
 		Service service = new Service();
 		

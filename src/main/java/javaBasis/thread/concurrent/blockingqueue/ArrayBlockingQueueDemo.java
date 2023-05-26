@@ -4,6 +4,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 
 /*
 基于数组实现的可阻塞队列，构造时必须制定数组大小，往里面放东西时如果数组满了便会阻塞直到有位置（也支持直接返回和超时等待），
+按先进先出的原则对元素进行排序。
 通过一个锁 ReentrantLock 保证线程安全。
 * */
 public class ArrayBlockingQueueDemo {
@@ -34,7 +35,7 @@ public class ArrayBlockingQueueDemo {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        //remainingCapacity()      剩余可用的大小。等于初始容量减去当前的 size
+        //bq.remainingCapacity(); 剩余可用的大小。等于初始容量减去当前的 size
         System.out.println(bq.remainingCapacity());
 
         System.out.println(bq);

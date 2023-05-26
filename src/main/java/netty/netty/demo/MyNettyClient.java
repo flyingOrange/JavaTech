@@ -74,15 +74,13 @@ public class MyNettyClient {
 	}
 }
 
-class MyNettyClientHandler extends ChannelInboundHandlerAdapter
-{
+class MyNettyClientHandler extends ChannelInboundHandlerAdapter {
 	public MyNettyClientHandler()
 	{
 		System.out.println("MyNettyClientHandler");
 	}
 	@Override
-	public void channelRead(ChannelHandlerContext ctx,Object msg)
-	{
+	public void channelRead(ChannelHandlerContext ctx,Object msg) {
 		ByteBuf buff = (ByteBuf)msg;
 		System.out.println("channelRead    "+buff.readableBytes());
 		
@@ -99,8 +97,7 @@ class MyNettyClientHandler extends ChannelInboundHandlerAdapter
         ctx.flush();//刷新后才将数据发出到SocketChannel
     }
 	@Override
-	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause)
-	{
+	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
 		System.out.println("exceptionCaught");
 		//cause.printStackTrace();
 		ctx.close();

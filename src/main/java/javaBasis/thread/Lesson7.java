@@ -4,28 +4,22 @@ package javaBasis.thread;
  * 一生产者一消费者
  * 
  */
-class ValueObject
-{
+class ValueObject {
 	public static String value="";
 }
 //生产者
-class Producer
-{
+class Producer {
 	private String lock;
 	
-	public Producer(String lock)
-	{
+	public Producer(String lock) {
 		super();
 		this.lock = lock;
 	}
 	
-	public void setValue()
-	{
+	public void setValue() {
 		try{
-			synchronized(lock)
-			{
-				if(!ValueObject.value.equals(""))
-				{
+			synchronized(lock) {
+				if(!ValueObject.value.equals("")) {
 					System.out.println("setValue   wait");
 					lock.wait();
 				}
@@ -36,8 +30,7 @@ class Producer
 				
 			}
 			
-		}catch(InterruptedException e)
-		{
+		}catch(InterruptedException e) {
 			e.printStackTrace();
 		}
 	}
@@ -48,18 +41,14 @@ class Consumer
 {
 	private String lock;
 	
-	public Consumer(String lock)
-	{
+	public Consumer(String lock) {
 		super();
 		this.lock = lock;
 	}
-	public void getValue()
-	{
+	public void getValue() {
 		try{
-			synchronized(lock)
-			{
-				if(ValueObject.value.equals(""))
-				{
+			synchronized(lock) {
+				if(ValueObject.value.equals("")) {
 					System.out.println("getValue   wait");
 					lock.wait();
 				}
@@ -76,40 +65,32 @@ class Consumer
 		
 }
 
-class ThreadP extends Thread
-{
+class ThreadP extends Thread {
 	private Producer p;
-	public ThreadP(Producer p)
-	{
+	public ThreadP(Producer p) {
 		super();
 		this.p = p;
 	}
 	
 	@Override
-	public void run()
-	{
-		while(true)
-		{
+	public void run() {
+		while(true) {
 			p.setValue();
 		}
 	}
 	
 }
 
-class ThreadC extends Thread
-{
+class ThreadC extends Thread {
 	private Consumer c;
-	public ThreadC(Consumer c)
-	{
+	public ThreadC(Consumer c) {
 		super();
 		this.c = c;
 	}
 	
 	@Override 
-	public void run()
-	{
-		while(true)
-		{
+	public void run() {
+		while(true) {
 			c.getValue();
 		}
 	}

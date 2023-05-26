@@ -1,4 +1,4 @@
-package javaBasis.thread.concurrent.queue;
+package javaBasis.thread.concurrent.deque;
 
 import java.util.concurrent.ConcurrentLinkedDeque;
 
