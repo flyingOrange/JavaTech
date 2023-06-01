@@ -1,4 +1,4 @@
-package javaBasis.thread.callableAndFuture;
+package javaBasis.thread.concurrent.callableAndFuture;
 
 import java.util.Random;
 import java.util.concurrent.Callable;

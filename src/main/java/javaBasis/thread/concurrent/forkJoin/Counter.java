@@ -1,4 +1,4 @@
-package javaBasis.thread.forkJoin;
+package javaBasis.thread.concurrent.forkJoin;
 
 import java.util.concurrent.RecursiveTask;
 import java.util.function.DoublePredicate;

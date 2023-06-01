@@ -12,7 +12,7 @@ import java.util.concurrent.Executors;
 * */
 public class CountDownLatchDemo1 {
     public static void main(String[] args) {
-        ExecutorService service = Executors.newFixedThreadPool(3);
+        ExecutorService service = Executors.newFixedThreadPool(1);
         final CountDownLatch latch = new CountDownLatch(3);
         for (int i = 0; i < 3; i++) {
             Runnable runnable = new Runnable() {

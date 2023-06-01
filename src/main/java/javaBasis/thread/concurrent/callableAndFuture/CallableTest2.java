@@ -1,4 +1,4 @@
-package javaBasis.thread.callableAndFuture;
+package javaBasis.thread.concurrent.callableAndFuture;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
