@@ -1,7 +1,5 @@
 package javaBasis.thread.concurrent.blockingqueue;
 
-import designPattern.builder.Main;
-
 import java.util.concurrent.PriorityBlockingQueue;
 
 /*
@@ -19,6 +17,12 @@ public class PriorityBlockingQueueDemo {
         try {
             //对象实现Comparable接口，优先取出
             Integer i = bp.take();
+            System.out.println(i);
+            i = bp.take();
+            System.out.println(i);
+            i = bp.take();
+            System.out.println(i);
+            i = bp.take();
             System.out.println(i);
         } catch (InterruptedException e) {
             e.printStackTrace();

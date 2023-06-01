@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /*
-基于链表实现的阻塞队列，想比与不阻塞的 ConcurrentLinkedQueue
+基于链表实现的阻塞队列，相比与不阻塞的 ConcurrentLinkedQueue
 LinkedBlockingQueue中的锁是分离的，生产者的锁PutLock，消费者的锁takeLock
 而ArrayBlockingQueue生产者和消费者使用的是同一把锁；
 * */

@@ -9,7 +9,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 * */
 public class ArrayBlockingQueueDemo {
     public static void main(String[] args) {
-        ArrayBlockingQueue<Integer> bq= new ArrayBlockingQueue<Integer>(3);
+        ArrayBlockingQueue<Integer> bq= new ArrayBlockingQueue<Integer>(10);
         //add(E e)     如果 BlockingQueue 可以容纳，则返回 true，否则报异常
         bq.add(23);
         bq.add(76);
@@ -23,10 +23,11 @@ public class ArrayBlockingQueueDemo {
             e.printStackTrace();
         }
         /******     offer/poll是一对互斥的操作，offer向队列种放入元素，poll取出元素       *****/
-        //offer(E e)   如果 BlockingQueue 可以容纳，则返回 true，否则返回 false
-        //bq.offer(20);
         //poll(time)：取走 BlockingQueue 里排在首位的对象，若不能立即取出，则可以等 time 参数规定的时间,取不到时返回 null
         bq.poll();
+        //offer(E e)   如果 BlockingQueue 可以容纳，则返回 true，否则返回 false
+        bq.offer(20);
+
 
         /******     put/take是一对互斥的操作，put向队列种放入元素  ********/
         //take()：取走 BlockingQueue 里排在首位的对象，若 BlockingQueue 为空，阻断进入等待状态直到 Blocking 有新的对象被加入为止
@@ -36,7 +37,7 @@ public class ArrayBlockingQueueDemo {
             e.printStackTrace();
         }
         //bq.remainingCapacity(); 剩余可用的大小。等于初始容量减去当前的 size
-        System.out.println(bq.remainingCapacity());
+        //System.out.println(bq.remainingCapacity());
 
         System.out.println(bq);
 
