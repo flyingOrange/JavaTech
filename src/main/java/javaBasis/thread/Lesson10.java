@@ -4,12 +4,10 @@ package javaBasis.thread;
  * ThreadLocal用来保存每个线程的独有的数据
  * 
  */
-class Tools
-{
+class Tools {
 	public static ThreadLocal tl = new ThreadLocal();
 }
-class ThreadA11 extends Thread
-{	
+class ThreadA11 extends Thread {
 	@Override
 	public void run()
 	{
@@ -29,8 +27,7 @@ class ThreadA11 extends Thread
 		}
 	}
 }
-class ThreadB11 extends Thread
-{	
+class ThreadB11 extends Thread {
 	@Override
 	public void run()
 	{
@@ -56,15 +53,13 @@ public class Lesson10 {
 		a.start();
 		b.start();
 		try{
-			for(int i=0;i<100;i++)
-			{
+			for(int i=0;i<100;i++) {
 				Tools.tl.set("main"+(i+1));
 				System.out.println("main get value="+Tools.tl.get());
 				Thread.sleep(200);
 			}
 			
-		}catch(InterruptedException e)
-		{
+		}catch(InterruptedException e) {
 			e.printStackTrace();
 			
 		}
