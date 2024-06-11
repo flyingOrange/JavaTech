@@ -3,15 +3,44 @@ package javaBasis.java8newFeatures.functionalInterface;
 import org.junit.Test;
 
 public class FunctionalTest {
+
     /**
-     * 需要单个参数
+     * 无参数函数式接口
+     */
+    @Test
+    public void testNoPar() {
+        //无参数，只有一条语句，可省略大括号
+        FunctionalInterfaceNoParam finp1 = () -> System.out.println("No param");
+        finp1.single();
+
+        FunctionalInterfaceNoParam finp2 = () -> {
+            System.out.print("No param & ");
+            System.out.println("one sentence");
+        };
+        finp2.single();
+    }
+
+
+    /**
+     * 需要单个参数,几种不同写法
      */
     @Test
     public void testOnePar() {
-        MyFunctionalInterface myFunctionalInterface = (String elem) -> {
-            System.out.println(elem);
+        MyFunctionalInterface myF1 = (message) -> System.out.println(message);
+        myF1.single("msg");
+
+        MyFunctionalInterface myF2 =  (message) -> {
+            System.out.print("two sentences ");
+            System.out.println(message);
         };
-        myFunctionalInterface.single("msg");
+        myF2.single("msg2");
+
+        MyFunctionalInterface myF3 =  message -> {
+            System.out.println(message);
+        };
+        myF3.single("msg3");
+
+
     }
 
     /*
