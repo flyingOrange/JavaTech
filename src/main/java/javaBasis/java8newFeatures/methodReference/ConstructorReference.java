@@ -1,4 +1,4 @@
-package java8newFeatures.methodReference;
+package javaBasis.java8newFeatures.methodReference;
 
 import java.util.function.Supplier;
 

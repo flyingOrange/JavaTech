@@ -1,12 +1,10 @@
-package java8newFeatures.stream;
+package javaBasis.java8newFeatures.stream;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
 import java.util.Stack;
 import java.util.function.Function;

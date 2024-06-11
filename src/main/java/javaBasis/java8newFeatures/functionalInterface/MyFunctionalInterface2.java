@@ -1,4 +1,4 @@
-package java8newFeatures.functionalInterface;
+package javaBasis.java8newFeatures.functionalInterface;
 
 @FunctionalInterface
 public interface MyFunctionalInterface2 {
